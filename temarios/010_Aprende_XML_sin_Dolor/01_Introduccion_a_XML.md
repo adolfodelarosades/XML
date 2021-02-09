@@ -114,11 +114,71 @@ XML no sustituye a HTML, sino que lo complementa.
    * WebService
    * y un largo etcétera
 
+XML se caracteríza por ser muy sencillo, cualquier dispositivo puede tener un XML, teléfonos, TV, moviles, etc.
 
+* XML no es un sustituto de HTML, aunque el estándar XHTML trata de reunir a ambos.
+* Al rededor de este lenguaje XML, tendremos otras especificaciones como DTD, XSLT o XPath.
+* Incluso se puede utilizar estilos en cascada (CSS) en documentos XML.
 
+XHTML domina las páginas Web hasta antes de aparecer HTML5.
+
+* Todas las especificaciones del lenguaje se encuentran en la página de W3C.
+http://www.w3.org/XML/
 
 ## 3.- ¿Qué necesitamos para crear un archivo XML? 03:43
-## 4.- Las etiquetas de XML 07:06
+
+* Un Editor
+* Un Navegador
+
+## 4.- Las Etiquetas de XML 07:06
+
+Vamos a crear nuestro primer archivo XML donde vamos a guardar información sobre Libros en nuestras etiquetas XML.
+
+XML cuenta con una etiqueta inicial que es opcional.
+Tenemos una etiqueta inicial llamada etiqueta raíz que generalmente se nombra en plural, en este caso es `<libros></libros>` todas las demas etiquetas estaran contenido dentro de esta etiqueta raíz.
+
+`libros.xml`
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<libros>
+<libro pagina="600">
+    <nombre>El Quijote de la Mancha</nombre>
+    <autor>Miguel de Cervantes Savedra</autor>
+    <editorial>Una muy vieja</editorial>
+</libro>
+<libro pagina="500">
+    <nombre>Cien años de soledad</nombre>
+    <autor>Gabriel García Márquez</autor>
+    <editorial>Obeja Negra</editorial>
+</libro>
+</libros>
+```
+
+Las etiquetas que usamos no estan definidas en ningún sitio nosotros les damos los nombres que consideremos pertinentes.
+
+Dentro de una etiqueta podemos colocar atributos cuyos valores deben estar entre comillas, en este ejemplo tenemos el atributo `pagina` con su respectivo valor para cada libro.
+
+Si abrimos este documento XML en el navegador tenemos:
+
+![4-1](images/4-1.png)
+![4-2](images/4-2.png)
+![4-3](images/4-3.png)
+
+En el mismo navegador me va informar si el documento esta o no bien formado.
+
+Como podemos ver tenemos etiquetas de apertura y de cierre, valores entre estas dos etiquetas, tenemos atributos dentro de las etiquetas de apertura y tenemos los valores de los atributos. Son los elementos principales de un documento XML.
+
+### Documentos Bien Formados
+
+* La declaración de XML es opcional.
+* Todos los archivos XML tienen sólo un nodo raíz.
+* El anidamiento de las etiquetas debe de ser siempre el correcto.
+* Los valores de los atributos siempre deben ir entre comillas.
+* No puede haber atributos sin valor.
+* Las etiquetas sin contenido, deben ser cerradas con una diagonal.
+* A un documento XML que sigue todas las reglas se le conoce como "Bien Formado" (Well-Formed).
+
 ## 5.- Reglas para un documento XML bien formado 06:55
 
 
