@@ -13,7 +13,7 @@ La poderosa herramienta que mueve a Internet
 ## Contenido del curso 
 #### 10 secciones • 81 clases • 7h 40m de duración total
 
-### 01 Introducción a XML • 14 clases • 1h 11m
+### [01 Introducción a XML](010_Aprende_XML_sin_Dolor/01_Introduccion_a_XML.md) • 14 clases • 1h 11m
 
 * Bienvenida al curso Aprende XML sin dolor 07:39
 * Qué es y qué no es XML 07:31
