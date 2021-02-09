@@ -161,7 +161,7 @@ Dentro de una etiqueta podemos colocar atributos cuyos valores deben estar entre
 
 Si abrimos este documento XML en el navegador tenemos:
 
-![4-1](images/4-1.png)
+![4-1](images/4-1.PNG)
 ![4-2](images/4-2.png)
 ![4-3](images/4-3.png)
 
