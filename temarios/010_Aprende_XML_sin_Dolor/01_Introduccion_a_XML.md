@@ -89,7 +89,34 @@ Con XML Schema, es otra forma de hacer validaciones o archivos de validaciones, 
 * Definir el archivo XSD y su enlace con XML
 * Definir los elementos principales del XSD
 
+En resumen vamos a ver como armamos un documento XML, como lo hacemos bien formado, como hacemos que sea valido, como darle estilo. 
+
 ## 2.- Qué es y qué no es XML 07:31
+
+### Introdución a XML
+
+* En 1991 Tim Barnes Lee crea las reglas de la primera versión de HTML. Invento 18 etiquetas para desarrollar el HTML.
+
+* En 1993 Marc Andressen y colaboradores crean Mosaic y Nescape el primer navegador.
+
+* En 1995 Bill Clinton permite el acceso libre a Internet... y lo demás es historia.
+
+* En 1998, ante la enorme explosión de páginas de internet y su necesario intercarcambio de información, la W3C genera la especificación del XML. Ya que HTML nunca fue pensado para manejar datos, se tenian más etiquetas que información.
+
+**XML** significa **eXtensible Markup Lenguage** es decir, nace como una ***extensión*** de HTML, pero sirve para el manejo de los datos.
+
+XML no sustituye a HTML, sino que lo complementa.
+
+* XML se caracteríza por ser sencillo, pero poderoso.
+* Tecnologías al rededor de él lo hacen fundamental en el desarrollo Web, como son:
+   * AJAX
+   * RSS
+   * WebService
+   * y un largo etcétera
+
+
+
+
 ## 3.- ¿Qué necesitamos para crear un archivo XML? 03:43
 ## 4.- Las etiquetas de XML 07:06
 ## 5.- Reglas para un documento XML bien formado 06:55
