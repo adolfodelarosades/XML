@@ -169,6 +169,12 @@ En el mismo navegador me va informar si el documento esta o no bien formado.
 
 Como podemos ver tenemos etiquetas de apertura y de cierre, valores entre estas dos etiquetas, tenemos atributos dentro de las etiquetas de apertura y tenemos los valores de los atributos. Son los elementos principales de un documento XML.
 
+## 5.- Reglas para un Documento XML Bien Formado 06:55
+
+* Documentos bien formados
+* Contenidos de un archivo XML
+
+
 ### Documentos Bien Formados
 
 * La declaración de XML es opcional.
@@ -178,8 +184,6 @@ Como podemos ver tenemos etiquetas de apertura y de cierre, valores entre estas 
 * No puede haber atributos sin valor.
 * Las etiquetas sin contenido, deben ser cerradas con una diagonal.
 * A un documento XML que sigue todas las reglas se le conoce como "Bien Formado" (Well-Formed).
-
-## 5.- Reglas para un documento XML bien formado 06:55
 
 
 ## 6.- Elementos de un archivo XML 03:20
