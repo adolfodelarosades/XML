@@ -1,6 +1,11 @@
 # 02. Uso de los Estilos en Cascada de un documento XML • 4 clases • 25m
 
 * 15.- Ligar un archivo XML a un archivo CSS 05:38
+* 16.- Crear el archivo de estilos en cascada con las etiquetas generales 06:15
+* 17.- Crear los estilos en cascada para los subnodos de XML 06:56
+* 18.- Manejar los atributos y colocar cadenas antes y después de los nodos 06:31
+
+## 15.- Ligar un archivo XML a un archivo CSS 05:38
 
 Vamos a partir del siguiente archivo XML.
 
@@ -23,11 +28,6 @@ Vamos a asociarle un archivo CSS a nuestro XML con:
 Nuestros navegador ya no lo pone como Arbor lo pone en una sola línea ya que no esta encontrando el archivo de estilo `libros.css`.
 
 
-* 16.- Crear el archivo de estilos en cascada con las etiquetas generales 06:15
-* 17.- Crear los estilos en cascada para los subnodos de XML 06:56
-* 18.- Manejar los atributos y colocar cadenas antes y después de los nodos 06:31
-
-## 15.- Ligar un archivo XML a un archivo CSS 05:38
 ## 16.- Crear el archivo de estilos en cascada con las etiquetas generales 06:15
 ## 17.- Crear los estilos en cascada para los subnodos de XML 06:56
 ## 18.- Manejar los atributos y colocar cadenas antes y después de los nodos 06:31
