@@ -13,7 +13,7 @@ La poderosa herramienta que mueve a Internet
 ## Contenido del curso 
 #### 10 secciones • 81 clases • 7h 40m de duración total
 
-### [01 Introducción a XML](010_Aprende_XML_sin_Dolor/01_Introduccion_a_XML.md) • 14 clases • 1h 11m
+### [01 Introducción a XML](010_Aprende_XML_sin_Dolor/01_Introduccion_a_XML.md) • 14 clases • 1h 11m :+1:
 
 * 1.- Bienvenida al curso Aprende XML sin dolor 07:39
 * 2.- Qué es y qué no es XML 07:31
@@ -30,7 +30,7 @@ La poderosa herramienta que mueve a Internet
 * 13.- Los caracteres especiales o Entities 04:03
 * 14.- Los espacios en blanco en un archivo XML 02:24
 
-### 02. Uso de los Estilos en Cascada de un documento XML • 4 clases • 25m
+### [02. Uso de los Estilos en Cascada de un documento XML](010_Aprende_XML_sin_Dolor/02_Uso_de_los_Estilos_en_Cascada_de_un_documento_XML.md) • 4 clases • 25m
 
 * Ligar un archivo XML a un archivo CSS 05:38
 * Crear el archivo de estilos en cascada con las etiquetas generales 06:15
