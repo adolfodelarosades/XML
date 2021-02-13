@@ -205,7 +205,7 @@ Como podemos ver tenemos etiquetas de apertura y de cierre, valores entre estas 
    ![05-07](images/05-07.png)
    ![05-08](images/05-08.png)
    
-   Pero si pongo el '=""' si lo acepta.
+   Pero si pongo el `=""` si lo acepta.
    
    ![05-09](images/05-09.png)
    ![05-10](images/05-10.png)
@@ -219,13 +219,124 @@ Como podemos ver tenemos etiquetas de apertura y de cierre, valores entre estas 
    ![05-05](images/05-05.png)
    ![05-06](images/05-06.png)
    
-**A un documento XML que sigue todas las reglas se le conoce como "Bien Formado" (Well-Formed)**.
+A un documento XML que sigue todas las reglas se le conoce como **"Bien Formado" (Well-Formed)**.
 
 
 ## 6.- Elementos de un archivo XML 03:20
-## 7.- La declaración XML 05:24
-## 8.- Los nodos o elementos de XML 04:30
-## 9.- Los atributos en un documento XML 03:38
+
+* Elementos o Nodos
+
+   ![06-01](images/06-01.png)
+   
+   En nuestro documento XML tenemos dos Nodos `Libro`. A su vez el Nodo `Libro` contiene otros elementos o nodos también llamados *subnodos* como `nombre`, `autor` y `editorial`.
+   
+* Atributos
+   
+   Los nombres de los Atributos no aceptan caracterers especiales, ni palabras claves, sus valores deben ir entre comillas, no debe haber atributos sin valores.
+   
+* Comentarios
+
+   Son los mismos que para HTML.
+   
+* Characters Data Section
+
+   Nos permite tener una sección donde se omita la validación del código y dentro del cual por ejemplo podemos meter etiquetas HTML.
+   
+* Instrucciones de Proceso
+
+   Es una especie como comentarios donde podemos meter instrucciones y el analizador sintactico no lo utilice y poder ejecutar algún tipo de acción.
+   
+* Entity References
+
+   Son los caracteres que no tenemos dentro de nuestro teclado por ejemplo CopyRigth, Yen, etc. usamos el `&` para desplegarlos.
+   
+  
+## 7.- La Declaración XML 05:24
+
+Ejemplos de declaraciones XML:
+
+```xml
+<?xml version="1.0"?>
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+```
+* **Opcional**: La declaración como ya hemos visto es opcional. 
+* La W3C recomienda tenerla.
+* Debe de ser la primer línea del archivo
+* **Versión**: del XML 1.0 o 1.1
+* **Encoding**: Opcional, en la declaración solemos poner el ***encode*** para que acepte los diferentes caracteres.
+* **Standalone**: Opcional y debe colocarse al final acepta un valor `yes` o `no`.
+
+
+## 8.- Los Nodos o Elementos de XML 04:30
+
+* Su nombre inicia con un guión bajo o letra.
+
+   Si comenzamos el nombre de un nodo con número tendremos un error.
+   
+   ![08-01](images/08-01.png)
+   ![08-02](images/08-02.png)
+   
+   Sin embargo si el nombre empieza con un guión bajo lo acepta sin problema.
+   
+   ![08-03](images/08-03.png)
+   ![08-04](images/08-04.png)
+   
+* Se puede usar letras, números, guiones o guienes bajos y puntos.
+* No se puede utilizar la cadena "xml" al nombrar un elemento.
+* No se permiten usar caracteres "raros" *no-funny-characters*, nada de acentos, nada de `ñ`, etc.
+
+   En teoría no se aceptan acentos pero me lo ha pasado.
+   
+   ![08-05](images/08-05.png)
+   ![08-06](images/08-06.png)
+
+   Los espacios no los acepta ya que la segunda palabra la toma como un atributo sin valor
+   
+   ![08-07](images/08-07.png)
+   ![08-08](images/08-08.png)
+   
+   Si queremos usar dos palabras para nombrar un nodo las separamos con guiones bajos.
+   
+   ![08-09](images/08-09.png)
+   ![08-10](images/08-10.png)
+   
+   Los nombres de los Nodos son CaseSensitive
+   
+   ![08-11](images/08-11.png)
+   ![08-12](images/08-12.png)
+
+
+## 9.- Los Atributos en un Documento XML 03:38
+
+* Un atributo sigue las mismas normas que un elemento para su nombre.
+   * Debe empezar con una letra o guion bajo
+   * No puede tener espacios
+   * Los acentos los acepta pero no es algo muy recomendado
+   * Y todas las reglas que en los nodos
+   
+   ![09-01](images/09-01.png)
+   ![09-02](images/09-02.png)
+   
+   ![09-03](images/09-03.png)
+   ![09-04](images/09-04.png)
+   
+* No puede haber atributos con el mismo nombre en una etiqueta.
+
+   ![09-05](images/09-05.png)
+   ![09-06](images/09-06.png)
+   
+   ![09-07](images/09-07.png)
+   ![09-08](images/09-08.png)
+   
+   ![09-09](images/09-09.png)
+   ![09-10](images/09-10.png)
+
+
 ## 10.- Los comentarios en un documento XML 05:25
 ## 11.- Character Data Section 05:11
 ## 12.- Instrucciones de proceso o processing instruction 04:11
