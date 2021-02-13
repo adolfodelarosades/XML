@@ -172,18 +172,54 @@ Como podemos ver tenemos etiquetas de apertura y de cierre, valores entre estas 
 ## 5.- Reglas para un Documento XML Bien Formado 06:55
 
 * Documentos bien formados
-* Contenidos de un archivo XML
-
+* Contenidos de un archivo XML, un documento XML contiene los datos.
+* Validación de un archivo XML, todos los navegadores validan los archivos XML.
+* XML Namespaces
 
 ### Documentos Bien Formados
 
 * La declaración de XML es opcional.
+
+   ![05-15](images/05-15.png)
+   ![05-16](images/05-16.png)
+   ![05-17](images/05-17.png)
+   
 * Todos los archivos XML tienen sólo un nodo raíz.
+   Si se mete más de un nodo raíz nos mostrara el siguiente error:
+   
+   ![05-00](images/05-00.png)
+   ![05-01](images/05-01.png)
+
 * El anidamiento de las etiquetas debe de ser siempre el correcto.
+
+   ![05-13](images/05-13.png)
+   ![05-14](images/05-14.png)
+   
 * Los valores de los atributos siempre deben ir entre comillas.
+
+   ![05-11](images/05-11.png)
+   ![05-12](images/05-12.png)
+   
 * No puede haber atributos sin valor.
+  
+   ![05-07](images/05-07.png)
+   ![05-08](images/05-08.png)
+   
+   Pero si pongo el '=""' si lo acepta.
+   
+   ![05-09](images/05-09.png)
+   ![05-10](images/05-10.png)
+
 * Las etiquetas sin contenido, deben ser cerradas con una diagonal.
-* A un documento XML que sigue todas las reglas se le conoce como "Bien Formado" (Well-Formed).
+
+   ![05-02](images/05-02.png)
+   ![05-03](images/05-03.png)
+   
+   ![05-04](images/05-04.png)
+   ![05-05](images/05-05.png)
+   ![05-06](images/05-06.png)
+   
+**A un documento XML que sigue todas las reglas se le conoce como "Bien Formado" (Well-Formed)**.
 
 
 ## 6.- Elementos de un archivo XML 03:20
