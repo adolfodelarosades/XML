@@ -338,8 +338,75 @@ Ejemplos de declaraciones XML:
 
 
 ## 10.- Los comentarios en un documento XML 05:25
+
+* Los comentarios son iguales a los de HTML
+* No se puede anidar los comentarios, ni dentro de las etiquetas, ni ir en el inicio, antes que la etiqueta de declaración XML.
+
+   ![10-01](images/10-01.png)
+   ![10-02](images/10-02.png)
+
 ## 11.- Character Data Section 05:11
-## 12.- Instrucciones de proceso o processing instruction 04:11
-## 13.- Los caracteres especiales o Entities 04:03
+
+* Permite escribir código libre, como etiquetas HTML, ya que su contenido no es analízado por el "parser" de XML.
+* No se pueden anidar CDATA dentro de otro CDATA.
+
+Vamos a suponer que queremos sacar la palabra **quijote** en negrita.
+
+   ![11-01](images/11-01.png)
+   ![11-02](images/11-02.png)
+   
+El analizador XML toma la etiqueta `<b>` como una etiqueta más como otro nodo más, no como una etiqueta HTML.
+
+Para hacer que esta parte del código no la analice usamos la etiqueta `<![CDATA[ .... ]]>`.
+
+   ![11-03](images/11-03.png)
+   ![11-04](images/11-04.png)
+   ![11-05](images/11-05.png)
+
+
+## 12.- Instrucciones de Proceso o Processing Instruction 04:11
+
+* Son instrucciones que sólo le interesan a la aplicación que procesa el archivo XML, no analizador XML.
+* Un ejemplo son los CSS
+* `<? target instruction ?>`
+* El nombre del target no puede ser XML y tiene las mismas reglas del nombre qye los nodos y atributos.
+
+Un ejemplo de un target para CSS es el siguiente:
+
+```xml
+<?xml-stylesheet type="text/xsl" href="estilos.css" ?>
+```
+
+   ![12-01](images/12-01.png)
+   ![12-02](images/12-02.png)
+   ![12-03](images/12-03.png)
+
+En este caso como no existe el archivo `estilos.css` en Firefox nos lo muestra como un texto en Chrome no muestra nada.
+
+
+## 13.- Los Caracteres Especiales o Entities 04:03
+
+* Son caracteres especiales que posiblemente no existen en el teclado, como marca registrada.
+* También pueden ser caracteres especiales como:
+
+   `&amp;` (`&`), `&apos;` (`"`), `&quot;` (`'`),  `&lt;` (`<`) o `&gt;` (`>`)  
+   
+   que se pueden usar en XML.
+   
+   ![13-01](images/13-01.png)
+   ![13-02](images/13-02.png)
+   ![13-03](images/13-03.png)
+
+
 ## 14.- Los espacios en blanco en un archivo XML 02:24
+
+* Los espacios en blanco, tabuladores, retornos de carro, etc. sirven para hacer más legible (para nosotros) a los archivos XML.
+* Los analízadores sintácticos de XML los ignoran, pero aumentan el tamaño de los archivos.
+
+Podríamos tener todo nuestro XML en una o dos líneas y eso al analízadores sintácticos de XML no le interesa en el navegador lo seguiriamos ver igual.
+
+   ![14-01](images/14-01.png)
+   ![14-02](images/14-02.png)
+
+Los espacios y tabuladores nos sirven a nosotros para hacerlo más legible a nuestros ojos.
 
