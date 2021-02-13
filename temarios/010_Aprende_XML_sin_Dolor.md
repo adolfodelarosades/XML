@@ -32,10 +32,10 @@ La poderosa herramienta que mueve a Internet
 
 ### [02. Uso de los Estilos en Cascada de un documento XML](010_Aprende_XML_sin_Dolor/02_Uso_de_los_Estilos_en_Cascada_de_un_documento_XML.md) • 4 clases • 25m
 
-* Ligar un archivo XML a un archivo CSS 05:38
-* Crear el archivo de estilos en cascada con las etiquetas generales 06:15
-* Crear los estilos en cascada para los subnodos de XML 06:56
-* Manejar los atributos y colocar cadenas antes y después de los nodos 06:31
+* 15.- Ligar un archivo XML a un archivo CSS 05:38
+* 16.- Crear el archivo de estilos en cascada con las etiquetas generales 06:15
+* 17.- Crear los estilos en cascada para los subnodos de XML 06:56
+* 18.- Manejar los atributos y colocar cadenas antes y después de los nodos 06:31
 
 ### 03. El Modelo DOM para XML • 6 clases • 48m
 
