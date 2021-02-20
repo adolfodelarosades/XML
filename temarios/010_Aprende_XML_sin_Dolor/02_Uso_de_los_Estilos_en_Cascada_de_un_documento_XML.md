@@ -68,7 +68,7 @@ libro{
 }
 ```
 
-![16-01](images/16-01.png)
+![16-01](images/16-01-1.png)
 
 Si cargamos el archivo `libros.xml` vamos a tener:
 
