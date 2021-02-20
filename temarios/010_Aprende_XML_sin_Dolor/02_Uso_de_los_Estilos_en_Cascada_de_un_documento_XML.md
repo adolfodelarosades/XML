@@ -176,7 +176,7 @@ Al cargar el archivo `libros.xml` en el navegador vemos lo siguiente:
 
 ![18-04](images/18-04.png)
 
-#### :computer: Archivos Finales.
+## :computer: Archivos Finales.
 
 `libro.xml`
 
