@@ -39,87 +39,87 @@ La poderosa herramienta que mueve a Internet
 
 ### 03. El Modelo DOM para XML • 6 clases • 48m
 
-* Introducción al Modelo DOM en XML 04:03
-* Padres, hijos y hermanos en XML 06:36
-* Cargar un archivo XML por medio de XMLHttpRequest 09:36
-* Propiedades y métodos para analizar un archivo XML 07:23
-* Recorrer un documento XML con las instrucciones DOM 13:33
-* Extraer el valor de los atributos con `getNamedItem()` 06:46
+* 19.- Introducción al Modelo DOM en XML 04:03
+* 20.- Padres, Hijos y Hermanos en XML 06:36
+* 21.- Cargar un Archivo XML por medio de XMLHttpRequest 09:36
+* 22.- Propiedades y Métodos para Analizar un Archivo XML 07:23
+* 23.- Recorrer un Documento XML con las Instrucciones DOM 13:33
+* 24.- Extraer el Valor de los Atributos con `getNamedItem()` 06:46
 
 ### 04. La Herramienta XPath • 8 clases • 41m
 
-* Introducción a XPath 04:16
-* Elementos de una cadena XPath 04:20
-* Cargar un archivo externo con `XMLHttpRequest` 09:35
-* Utilizar las instrucciones `xml.evaluate()` y `xml.iterateNext()` 08:39
-* Evaluar una expresión XPath en Internet Explorer 05:11
-* Los arreglos de datos en XPath 02:07
-* Uso de predicados en las expresiones XPath 02:41
-* Seleccionar los nodos bajo un criterio en XPath 04:32
+* 25.- Introducción a XPath 04:16
+* 26.- Elementos de una Cadena XPath 04:20
+* 27.- Cargar un Archivo Externo con `XMLHttpRequest` 09:35
+* 28.- Utilizar las Instrucciones `xml.evaluate()` y `xml.iterateNext()` 08:39
+* 29.- Evaluar una Expresión XPath en Internet Explorer 05:11
+* 30.- Los Arreglos de Datos en XPath 02:07
+* 31.- Uso de Predicados en las Expresiones XPath 02:41
+* 32.- Seleccionar los Nodos Bajo un Criterio en XPath 04:32
 
 ### 05. XSLT:EXtensible Stylesheet Language • 8 clases • 41m  
 
-* Introducción a XSLT 06:44
-* Crear un template con XSL 09:59
-* Extraer los datos de un documento XML con `value-of` 03:38
-* Hacer un ciclo en XSL con la etiqueta `<xsl:for-each>` 03:50
-* Realizar un filtro por medio de la etiqueta `<xsl:for-each>` 05:01
-* Ordenar una selección por medio de la etiqueta `<xsl:sort>` 02:51
-* Crear una sentencia condicional con `<xsl:if>` 03:46
-* Sentencias condicionales con `<choose>` 05:30
+* 33.- Introducción a XSLT 06:44
+* 34.- Crear un Template con XSL 09:59
+* 35.- Extraer los Datos de un Documento XML con `value-of` 03:38
+* 36.- Hacer un Ciclo en XSL con la Etiqueta `<xsl:for-each>` 03:50
+* 37.- Realizar un Filtro por Medio de la Etiqueta `<xsl:for-each>` 05:01
+* 38.- Ordenar una Selección por Medio de la Etiqueta `<xsl:sort>` 02:51
+* 39.- Crear una Sentencia Condicional con `<xsl:if>` 03:46
+* 40.- Sentencias Condicionales con `<choose>` 05:30
 
 ### 06. DTD: Definición de Tipo de Documento • 7 clases • 44m  
 
-* Introducción a la Definición de Tipo de Documento (DTD) 05:57
-* La Definición de tipo de documento interna y externa 04:46
-* Conceptos generales de modelado de datos 06:30
-* Definir los elementos de un documento DTD 05:57
-* Definir los atributos en un documento DTD 05:40
-* Crear un DTD interno y validarlo 08:49
-* Crear y validar un documento XML con un DTD externo 06:38
+* 41.- Introducción a la Definición de Tipo de Documento (DTD) 05:57
+* 42.- La Definición de Tipo de Documento Interna y Externa 04:46
+* 43.- Conceptos Generales de Modelado de Datos 06:30
+* 44.- Definir los Elementos de un Documento DTD 05:57
+* 45.- Definir los Atributos en un Documento DTD 05:40
+* 46.- Crear un DTD Interno y Validarlo 08:49
+* 47.- Crear y Validar un Documento XML con un DTD Externo 06:38
 
 ### 07. Introducción al XML Schema • 9 clases • 51m   
 
-* Crear un archivo XSD y llamarlo desde un documento XML 06:04
-* Definición de los elementos simples en XSD 02:53
-* Definición de los elementos complejos en XSD 05:55
-* Los indicadores de orden, número y grupo en XSD 05:46
-* Definir los atributos en los archivo XSD 03:08
-* Las restricciones o facets en los archivos XSD 03:58
-* Definir el archivo XSD y su enlace con XML 10:26
-* Definir los elementos principales del XSD 04:38
-* Definir los elementos secundarios y los atributos 07:44
+* 48.- Crear un archivo XSD y llamarlo desde un Documento XML 06:04
+* 49.- Definición de los Elementos Simples en XSD 02:53
+* 50.- Definición de los Elementos Complejos en XSD 05:55
+* 51.- Los Indicadores de Orden, Número y Grupo en XSD 05:46
+* 52.- Definir los Atributos en los Archivo XSD 03:08
+* 53.- Las Restricciones o Facets en los Archivos XSD 03:58
+* 54.- Definir el Archivo XSD y su Enlace con XML 10:26
+* 55.- Definir los Elementos Principales del XSD 04:38
+* 56.- Definir los Elementos Secundarios y los Atributos 07:44
 
 ### 08. Introducción a XQuery • 4 clases • 22m  
 
-* Instalar una base de datos XML: BaseX 03:39
-* Primeros comandos con XQuery 04:35
-* Instrucciones FLWOR 08:28
-* Instrucción Let y funciones 05:02
+* 57.- Instalar una Base de Datos XML: BaseX 03:39
+* 58.- Primeros Comandos con XQuery 04:35
+* 59.- Instrucciones FLWOR 08:28
+* 60.- Instrucción Let y Funciones 05:02
 
 ### 09. Manejo de XML con SimpleXML(Bonus) • 20 clases • 1h 56m   
 
-* Introducción a la sección simpleXML con PHP 02:52
-* Herramientas XML en PHP 05:58
-* Cargar un documento XML con SimpleXML 06:47
-* Acceder a los elementos y atributos con SimpleXML 06:14
-* Manejo de cadenas en SimpleXML 08:05
-* Etiquetas XML especiales 05:43
-* Manejo de errores en SimpleXML 06:33
-* El espacio de nombres en SimpleXML 07:01
-* Obtener los espacios de nombres de un documento y un elemento 08:02
-* Acceder a los elementos y atributos con espacios de nombres con SimpleXML 07:45
-* SimpleXML y XPath 02:47
-* Filtrar nodos por medio de XPath 04:29
-* Modificar el prefijo de un Namespace con SimpleXML 04:59
-* Editar y eliminar elementos en un documento XML 07:54
-* Modificar, eliminar y almacenar documentos con NS 04:34
-* Añadir nodos y atributos con simpleXML 06:53
-* SimpleXML y DOMDocument 04:29
-* El iterador SimpleXML 05:02
-* Exportar un documento XML a una base de datos 10:13
-* Apuntes de la sección "SimpleXML con PHP" 00:02
-* Archivos del curso Aprende XML sin dolor 00:33
+* 61.- Introducción a la sección simpleXML con PHP 02:52
+* 62.- Herramientas XML en PHP 05:58
+* 63.- Cargar un documento XML con SimpleXML 06:47
+* 64.- Acceder a los elementos y atributos con SimpleXML 06:14
+* 65.- Manejo de cadenas en SimpleXML 08:05
+* 66.- Etiquetas XML especiales 05:43
+* 67.- Manejo de errores en SimpleXML 06:33
+* 68.- El espacio de nombres en SimpleXML 07:01
+* 69.- Obtener los espacios de nombres de un documento y un elemento 08:02
+* 70.- Acceder a los elementos y atributos con espacios de nombres con SimpleXML 07:45
+* 71.- SimpleXML y XPath 02:47
+* 72.- Filtrar nodos por medio de XPath 04:29
+* 73.- Modificar el prefijo de un Namespace con SimpleXML 04:59
+* 74.- Editar y eliminar elementos en un documento XML 07:54
+* 75.- Modificar, eliminar y almacenar documentos con NS 04:34
+* 76.- Añadir nodos y atributos con simpleXML 06:53
+* 77.- SimpleXML y DOMDocument 04:29
+* 78.- El iterador SimpleXML 05:02
+* 79.- Exportar un documento XML a una base de datos 10:13
+* 80.- Apuntes de la sección "SimpleXML con PHP" 00:02
+* 81.- Archivos del curso Aprende XML sin dolor 00:33
 
 ### Requisitos
 
