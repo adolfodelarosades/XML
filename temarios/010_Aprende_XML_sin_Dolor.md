@@ -37,7 +37,7 @@ La poderosa herramienta que mueve a Internet
 * 17.- Crear los estilos en cascada para los subnodos de XML 06:56
 * 18.- Manejar los atributos y colocar cadenas antes y después de los nodos 06:31
 
-### 03. El Modelo DOM para XML • 6 clases • 48m
+### [03. El Modelo DOM para XML](https://github.com/adolfodelarosades/XML/blob/main/temarios/010_Aprende_XML_sin_Dolor/03_El_Modelo_DOM_para_XML.md) • 6 clases • 48m
 
 * 19.- Introducción al Modelo DOM en XML 04:03
 * 20.- Padres, Hijos y Hermanos en XML 06:36
