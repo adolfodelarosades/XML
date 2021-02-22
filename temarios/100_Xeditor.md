@@ -85,3 +85,47 @@ Ahora debería ver Xeditor con la barra de herramientas desactivada y solo la ca
 
 ![1-2](https://github.com/adolfodelarosades/XML/blob/main/temarios/100_Xeditor/images/1-2.PNG)
 
+## Integración
+
+Xeditor simplifica la integración al proporcionar API que conectan el backend con el frontent. Por ejemplo, en nuestro paquete demo encontrará la siguiente línea de código en `src/js/config/urls.js`
+
+```sh
+documentURL: '//127.0.0.1:3000/editor/load',
+```
+
+Para cargar su propio documento, simplemente escriba su propio servicio (en cualquier lenguaje de programación que necesite) y devuélvalo a `documentURL`. Nuestros paquetes de demostración utilizan node.js para administrar el servicio de carga, que puede encontrar en `node_modules/@xeditor/server-js`. Puede usar este paquete como punto de partida (se puede descargar por separado en `npm pack @xeditor/server-js`) o escribir el suyo propio. Si usa nuestros archivos `server-js`, debe copiarlos en una nueva ubicación antes de editar las siguientes líneas para incorporar sus propios servicios:
+
+```js
+// add load url
+app.post('/editor/load', function (req, res) {
+   // get parameters
+   const schema = req.body.schema || 'demo@0.0';
+   const file = req.body.file || 'default';
+
+   console.log(`LOAD '${schema}/${file}'`);
+
+   // write header
+   res.setHeader('Content-Type', 'text/xml');
+
+   getXml(schema, file, (err, data) => {
+      if (err) {
+         // invalid string
+         res.status(500).end('No file found. Invalid schema or file');
+         return;
+      }
+      res.end(data);
+   });
+}); 
+```
+
+Para obtener más información, consulte [Configuración del Servidor](https://documentation.xeditor.com/topics/core/server_setup/) y [Blackbox](https://documentation.xeditor.com/topics/core/blackbox_description/).
+
+## Próximos pasos
+
+Ahora que tiene la aplicación Xeditor en funcionamiento, tiene algunas opciones.
+
+**Aprenda Xeditor con el paquete de demostración**. Puede continuar modificando archivos en el paquete para personalizar Xeditor.
+
+**Descarga el paquete prediseñado**. Puede descargar uno de nuestros otros paquetes, como [DITA](https://documentation.xeditor.com/dita/).
+
+**Descargue** [el paquete limpio de Xeditor](https://documentation.xeditor.com/topics/core/configuration/). Puede descargar nuestra versión limpia y ver nuestra [Guía de Configuración](https://documentation.xeditor.com/topics/core/configuration/) para que pueda comenzar a construir su propia versión de Xeditor desde cero.
