@@ -129,3 +129,8 @@ Ahora que tiene la aplicación Xeditor en funcionamiento, tiene algunas opciones
 **Descarga el paquete prediseñado**. Puede descargar uno de nuestros otros paquetes, como [DITA](https://documentation.xeditor.com/dita/).
 
 **Descargue** [el paquete limpio de Xeditor](https://documentation.xeditor.com/topics/core/configuration/). Puede descargar nuestra versión limpia y ver nuestra [Guía de Configuración](https://documentation.xeditor.com/topics/core/configuration/) para que pueda comenzar a construir su propia versión de Xeditor desde cero.
+
+
+<hr>
+
+## [Configuración](https://github.com/adolfodelarosades/XML/blob/main/temarios/100_Xeditor/Configuracion.md)
