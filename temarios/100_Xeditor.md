@@ -56,7 +56,7 @@ Le recomendamos que comience por instalar el paquete de demostración de **Xedit
    
 El paquete de demostración ya está en funcionamiento. ¡Disfrutar!
 
-![1-1](https://github.com/adolfodelarosades/XML/blob/main/temarios/100_Xeditor/images/1-1.PNG)
+![1-1](100_Xeditor/images/1-1.PNG)
 
 
 ## Personaliza y Construye
