@@ -56,7 +56,8 @@ Le recomendamos que comience por instalar el paquete de demostración de **Xedit
    
 El paquete de demostración ya está en funcionamiento. ¡Disfrutar!
 
-![1-1](images/1-1.PNG)
+![1-1](https://github.com/adolfodelarosades/XML/blob/main/temarios/100_Xeditor/images/1-1.PNG)
+
 
 ## Personaliza y Construye
 
@@ -82,5 +83,5 @@ Ahora que estamos en funcionamiento, hagamos algunos cambios. En este ejemplo, c
 
 Ahora debería ver Xeditor con la barra de herramientas desactivada y solo la capacidad de agregar comentarios.
 
-![1-2](images/1-2.PNG)
+![1-2](https://github.com/adolfodelarosades/XML/blob/main/temarios/100_Xeditor/images/1-2.PNG)
 
