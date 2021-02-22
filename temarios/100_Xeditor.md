@@ -83,7 +83,7 @@ Ahora que estamos en funcionamiento, hagamos algunos cambios. En este ejemplo, c
 
 Ahora debería ver Xeditor con la barra de herramientas desactivada y solo la capacidad de agregar comentarios.
 
-![1-2](https://github.com/adolfodelarosades/XML/blob/main/temarios/100_Xeditor/images/1-2.PNG)
+![1-2](100_Xeditor/images/1-2.PNG)
 
 ## Integración
 
