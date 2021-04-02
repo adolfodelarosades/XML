@@ -1,3 +1,3 @@
 # Recursos XML
 
-* ![TutorialPoins sobre XML](https://www.tutorialspoint.com/tutorialslibrary.htm)
+* [TutorialPoins sobre XML](https://www.tutorialspoint.com/tutorialslibrary.htm)
