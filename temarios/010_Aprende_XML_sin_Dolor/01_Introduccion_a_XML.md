@@ -207,6 +207,8 @@ Como podemos ver tenemos ***etiquetas de apertura y de cierre***, ***valores*** 
 
 ## 5.- Reglas para un Documento XML Bien Formado 06:55
 
+![5-01](images/5-01.png)
+
 * Documentos bien formados
 * Contenidos de un archivo XML, un documento XML contiene los datos.
 * Validación de un archivo XML, todos los navegadores validan los archivos XML.
@@ -216,11 +218,16 @@ Como podemos ver tenemos ***etiquetas de apertura y de cierre***, ***valores*** 
 
 * La declaración de XML es opcional.
 
+   ![5-07](images/5-07.png)
+
    ![05-15](images/05-15.png)
    ![05-16](images/05-16.png)
    ![05-17](images/05-17.png)
    
 * Todos los archivos XML tienen sólo un nodo raíz.
+
+   ![5-02](images/5-02.png)
+
    Si se mete más de un nodo raíz nos mostrara el siguiente error:
    
    ![05-00](images/05-00.png)
@@ -228,16 +235,22 @@ Como podemos ver tenemos ***etiquetas de apertura y de cierre***, ***valores*** 
 
 * El anidamiento de las etiquetas debe de ser siempre el correcto.
 
+   ![5-06](images/5-06.png)
+
    ![05-13](images/05-13.png)
    ![05-14](images/05-14.png)
    
 * Los valores de los atributos siempre deben ir entre comillas.
 
+   ![5-05](images/5-05.png)
+
    ![05-11](images/05-11.png)
    ![05-12](images/05-12.png)
    
 * No puede haber atributos sin valor.
-  
+
+   ![5-04](images/5-04.png)
+   
    ![05-07](images/05-07.png)
    ![05-08](images/05-08.png)
    
@@ -248,6 +261,8 @@ Como podemos ver tenemos ***etiquetas de apertura y de cierre***, ***valores*** 
 
 * Las etiquetas sin contenido, deben ser cerradas con una diagonal.
 
+   ![5-03](images/5-03.png)
+
    ![05-02](images/05-02.png)
    ![05-03](images/05-03.png)
    
@@ -256,6 +271,8 @@ Como podemos ver tenemos ***etiquetas de apertura y de cierre***, ***valores*** 
    ![05-06](images/05-06.png)
    
 A un documento XML que sigue todas las reglas se le conoce como **"Bien Formado" (Well-Formed)**.
+
+   ![5-08](images/5-08.png)
 
 
 ## 6.- Elementos de un archivo XML 03:20
