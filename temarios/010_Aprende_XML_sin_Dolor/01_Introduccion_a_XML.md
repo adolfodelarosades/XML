@@ -159,6 +159,8 @@ XHTML domina las páginas Web hasta antes de aparecer HTML5.
 * Todas las especificaciones del lenguaje se encuentran en la página de W3C.
 http://www.w3.org/XML/
 
+![02-10](images/02-10.png)
+
 ## 3.- ¿Qué necesitamos para crear un archivo XML? 03:43
 
 * Un Editor
