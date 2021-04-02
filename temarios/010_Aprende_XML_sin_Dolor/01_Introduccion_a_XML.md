@@ -193,7 +193,7 @@ Tenemos una etiqueta inicial llamada etiqueta raíz que generalmente se nombra e
 
 Las etiquetas que usamos no estan definidas en ningún sitio nosotros les damos los nombres que consideremos pertinentes.
 
-Dentro de una etiqueta podemos colocar atributos cuyos valores deben estar entre comillas, en este ejemplo tenemos el atributo `pagina` con su respectivo valor para cada libro.
+Dentro de una etiqueta podemos colocar ***atributos cuyos valores deben estar entre comillas***, en este ejemplo tenemos el atributo `pagina` con su respectivo valor para cada libro.
 
 Si abrimos este documento XML en el navegador tenemos:
 
@@ -203,7 +203,7 @@ Si abrimos este documento XML en el navegador tenemos:
 
 En el mismo navegador me va informar si el documento esta o no bien formado.
 
-Como podemos ver tenemos etiquetas de apertura y de cierre, valores entre estas dos etiquetas, tenemos atributos dentro de las etiquetas de apertura y tenemos los valores de los atributos. Son los elementos principales de un documento XML.
+Como podemos ver tenemos ***etiquetas de apertura y de cierre***, ***valores*** entre estas dos etiquetas, tenemos ***atributos*** dentro de las etiquetas de apertura y tenemos los ***valores de los atributos***. **Son los elementos principales de un documento XML**.
 
 ## 5.- Reglas para un Documento XML Bien Formado 06:55
 
@@ -260,7 +260,7 @@ A un documento XML que sigue todas las reglas se le conoce como **"Bien Formado"
 
 ## 6.- Elementos de un archivo XML 03:20
 
-![06-01](images/06-01.png)
+![6-01](images/6-01.png)
 
 * Elementos o Nodos
 
