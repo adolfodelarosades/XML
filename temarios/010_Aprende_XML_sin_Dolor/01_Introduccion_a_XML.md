@@ -19,6 +19,8 @@
 
 ### Introducción a XML
 
+![01-02](images/01-02.png)
+
 * Qué es y qué no es XML
 * ¿Qué necesitamos para crear un archivo XML?
 * Las etiquetas XML
@@ -27,7 +29,9 @@
 
 Todo lo necesario para crear un archivo XML.
 
-### Los estilos en cascada para XML
+### Los Estilos en Cascada para XML
+
+![01-03](images/01-03.png)
 
 Alrededor de XML hay muchas herramientas, una de ellas son los estilos en cascada para darle estilos a un XML
 
@@ -37,6 +41,8 @@ Alrededor de XML hay muchas herramientas, una de ellas son los estilos en cascad
 * Manejar los atributos y colocar cadenas antes y después de los nodos
 
 ### El Modelo DOM para XML
+
+![01-04](images/01-04.png)
 
 El DOM nos permite manejar el HTML y el XML, lo haremos a través de JS.
 
@@ -48,6 +54,8 @@ El DOM nos permite manejar el HTML y el XML, lo haremos a través de JS.
 
 ### La herramienta XPath
 
+![01-05](images/01-05.png)
+
 Otra herramienta importante es el XPath.
 
 * Introducción a XPath
@@ -57,6 +65,8 @@ Otra herramienta importante es el XPath.
 * Evaluar una expresión XPath en Internet
 
 ### XSLT: eXtensible Stylesheet Language Transformation
+
+![01-06](images/01-06.png)
 
 XSLT nos permite transformar un XML en una página, añade cosas que no se pueden hacer con CSS.
 
@@ -68,6 +78,8 @@ XSLT nos permite transformar un XML en una página, añade cosas que no se puede
 
 ### DTD: Definición de Tipo de Documento
 
+![01-07](images/01-07.png)
+
 Un DTD nos permite saber si un documento XML esta ***bien formado*** y además si es ***valido***, podemos tener ciertas reglas para definir un lenguaje. Esta es una tecnología más vieja que los Schemas.  
 
 * Introducción a la Definición de Tipo de Documento (DTD)
@@ -78,6 +90,10 @@ Un DTD nos permite saber si un documento XML esta ***bien formado*** y además s
 * Crear y validar un documento XML con un DTD externo
 
 ### Introducción al XML Schema
+
+![01-08](images/01-08.png)
+
+![01-09](images/01-09.png)
 
 Con XML Schema, es otra forma de hacer validaciones o archivos de validaciones, es más poderoso que DTD, se apega más a a las reglas del XML, es más complejo que DTD pero nos permite hacer muchas más cosas que DTD. 
 
