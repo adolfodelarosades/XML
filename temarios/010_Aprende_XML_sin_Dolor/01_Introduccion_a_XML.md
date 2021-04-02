@@ -113,17 +113,29 @@ En resumen vamos a ver como armamos un documento XML, como lo hacemos bien forma
 
 ### Introdución a XML
 
+![02-02](images/02-02.png)
+
 * En 1991 Tim Barnes Lee crea las reglas de la primera versión de HTML. Invento 18 etiquetas para desarrollar el HTML.
+
+![02-03](images/02-03.png)
 
 * En 1993 Marc Andressen y colaboradores crean Mosaic y Nescape el primer navegador.
 
+![02-04](images/02-04.png)
+
 * En 1995 Bill Clinton permite el acceso libre a Internet... y lo demás es historia.
 
+![02-05](images/02-05.png)
+
 * En 1998, ante la enorme explosión de páginas de internet y su necesario intercarcambio de información, la W3C genera la especificación del XML. Ya que HTML nunca fue pensado para manejar datos, se tenian más etiquetas que información.
+
+![02-06](images/02-06.png)
 
 **XML** significa **eXtensible Markup Lenguage** es decir, nace como una ***extensión*** de HTML, pero sirve para el manejo de los datos.
 
 XML no sustituye a HTML, sino que lo complementa.
+
+![02-07](images/02-07.png)
 
 * XML se caracteríza por ser sencillo, pero poderoso.
 * Tecnologías al rededor de él lo hacen fundamental en el desarrollo Web, como son:
@@ -134,11 +146,15 @@ XML no sustituye a HTML, sino que lo complementa.
 
 XML se caracteríza por ser muy sencillo, cualquier dispositivo puede tener un XML, teléfonos, TV, moviles, etc.
 
+![02-08](images/02-08.png)
+
 * XML no es un sustituto de HTML, aunque el estándar XHTML trata de reunir a ambos.
 * Al rededor de este lenguaje XML, tendremos otras especificaciones como DTD, XSLT o XPath.
 * Incluso se puede utilizar estilos en cascada (CSS) en documentos XML.
 
 XHTML domina las páginas Web hasta antes de aparecer HTML5.
+
+![02-09](images/02-09.png)
 
 * Todas las especificaciones del lenguaje se encuentran en la página de W3C.
 http://www.w3.org/XML/
