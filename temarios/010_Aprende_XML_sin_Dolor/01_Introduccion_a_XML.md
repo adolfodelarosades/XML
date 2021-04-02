@@ -260,6 +260,8 @@ A un documento XML que sigue todas las reglas se le conoce como **"Bien Formado"
 
 ## 6.- Elementos de un archivo XML 03:20
 
+![06-01](images/06-01.png)
+
 * Elementos o Nodos
 
    ![06-01](images/06-01.png)
