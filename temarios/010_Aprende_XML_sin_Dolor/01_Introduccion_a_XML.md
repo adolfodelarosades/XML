@@ -19,6 +19,8 @@
 
 ### Introducción a XML
 
+![01-00](images/01-00.jpeg)
+
 ![01-02](images/01-02.png)
 
 * Qué es y qué no es XML
