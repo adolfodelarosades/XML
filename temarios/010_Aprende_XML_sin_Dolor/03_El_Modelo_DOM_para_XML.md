@@ -11,20 +11,32 @@
 
 Existen tres especificaciones para el DOM la de HTML, JS y XML, en este caso la que nos interesa es la de XML.
 
+![019-01](images/019-01.png)
+![019-02](images/019-02.png)
+
 **DOM** significa Document Object Model o Modelo de Documento de tipo Objeto.
 
 * Creado como estándar en 1998 por la W3C.
 * Provee una forma de manipular, crear, cambiar y borrar el contenido de un documento por medio de un script(código).
 * El modelo DOM es independiente de la plataforma, navegador o lenguaje de programación.
 * Representa a un documento como un árbol y permite acceder a la estructura del mismo.
+
+![019-03](images/019-03.png)
+
 * En el modelo DOM de XML, TODO es un nodo del árbol:
    * Elementods
    * Instrucciones de proceso
    * CDATA
    * Comentarios
    * Textos o contenidos
+
+![019-04](images/019-04.png)
+
 * La relación entre nodos es de ***Padre - Hijo***
-* En DOM se utiliza en foerma frecuente los terminos:
+
+![019-05](images/019-05.png)
+
+* En DOM se utiliza en forma frecuente los terminos:
    * ***child**/ (hijo)
    * ***sibling**/ (hermano)
    * ***ancestor**/ (ancestro)
@@ -45,6 +57,8 @@ En este caso `Libros` es el *padre* de `Libro` y a su vez `Libro` es *hijo* de `
 
 ## 20.- Padres, Hijos y Hermanos en XML 06:36
 
+![020-01](images/020-01.png)
+
 * Los nodos tienen una relación jerárquica dentro del árbol.
 * Los *nodos padres* tienen *nodos hijos*, también llamados *subnodos*.
 * Los *nodos hijos* del mismo padre son conocidos como *hermanos(siblings)*, etc.
@@ -64,6 +78,8 @@ Vamos a tener un nodo principal llamado ***Nodo Raíz***, en XML solo puede exis
 * ***lastchild*** es el último de los hijos de un padre tomandolos de izquierda a derecha.
 * ***nextSibling*** es una funcionalidad que nos permite pasar al siguiente hermano, siempre de izquierda a derecha.
 * ***previousSibling*** es una funcionalidad que nos permite regresar al hermano previo.
+
+![20-03](images/20-03.png)
 
 Gracias a que la estructura de un archivo XML se puede representar como un árbol, podemos recorrerlo sin saber su estructura exacta y sin conocer los datos que contiene.
 
