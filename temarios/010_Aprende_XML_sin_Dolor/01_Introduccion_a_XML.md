@@ -308,6 +308,8 @@ A un documento XML que sigue todas las reglas se le conoce como **"Bien Formado"
   
 ## 7.- La Declaración XML 05:24
 
+![7-01](images/7-01.png)
+
 Ejemplos de declaraciones XML:
 
 ```xml
@@ -328,6 +330,8 @@ Ejemplos de declaraciones XML:
 
 
 ## 8.- Los Nodos o Elementos de XML 04:30
+
+![8-01](images/8-01.png)
 
 * Su nombre inicia con un guión bajo o letra.
 
@@ -368,6 +372,8 @@ Ejemplos de declaraciones XML:
 
 ## 9.- Los Atributos en un Documento XML 03:38
 
+![9-01](images/9-01.png)
+
 * Un atributo sigue las mismas normas que un elemento para su nombre.
    * Debe empezar con una letra o guion bajo
    * No puede tener espacios
@@ -394,6 +400,8 @@ Ejemplos de declaraciones XML:
 
 ## 10.- Los comentarios en un documento XML 05:25
 
+![010-01](images/010-01.png)
+
 * Los comentarios son iguales a los de HTML
 * No se puede anidar los comentarios, ni dentro de las etiquetas, ni ir en el inicio, antes que la etiqueta de declaración XML.
 
@@ -401,6 +409,8 @@ Ejemplos de declaraciones XML:
    ![10-02](images/10-02.png)
 
 ## 11.- Character Data Section 05:11
+
+![011-01](images/011-01.png)
 
 * Permite escribir código libre, como etiquetas HTML, ya que su contenido no es analízado por el "parser" de XML.
 * No se pueden anidar CDATA dentro de otro CDATA.
@@ -420,6 +430,8 @@ Para hacer que esta parte del código no la analice usamos la etiqueta `<![CDATA
 
 
 ## 12.- Instrucciones de Proceso o Processing Instruction 04:11
+
+![012-01](images/012-01.png)
 
 * Son instrucciones que sólo le interesan a la aplicación que procesa el archivo XML, no analizador XML.
 * Un ejemplo son los CSS
@@ -441,6 +453,8 @@ En este caso como no existe el archivo `estilos.css` en Firefox nos lo muestra c
 
 ## 13.- Los Caracteres Especiales o Entities 04:03
 
+![013-01](images/013-01.png)
+
 * Son caracteres especiales que posiblemente no existen en el teclado, como marca registrada.
 * También pueden ser caracteres especiales como:
 
@@ -454,6 +468,8 @@ En este caso como no existe el archivo `estilos.css` en Firefox nos lo muestra c
 
 
 ## 14.- Los espacios en blanco en un archivo XML 02:24
+
+![014-01](images/014-01.png)
 
 * Los espacios en blanco, tabuladores, retornos de carro, etc. sirven para hacer más legible (para nosotros) a los archivos XML.
 * Los analízadores sintácticos de XML los ignoran, pero aumentan el tamaño de los archivos.
