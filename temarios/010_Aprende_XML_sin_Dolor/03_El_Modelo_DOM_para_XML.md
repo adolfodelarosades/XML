@@ -37,10 +37,10 @@ Existen tres especificaciones para el DOM la de HTML, JS y XML, en este caso la 
 ![019-05](images/019-05.png)
 
 * En DOM se utiliza en forma frecuente los terminos:
-   * ***child**/ (hijo)
-   * ***sibling**/ (hermano)
-   * ***ancestor**/ (ancestro)
-   * ***descendent**/ (decendiente)
+   * ***child*** (hijo)
+   * ***sibling*** (hermano)
+   * ***ancestor*** (ancestro)
+   * ***descendent*** (decendiente)
 
 Partiendo de nuestro ejemplo:
 
@@ -87,7 +87,7 @@ Gracias a que la estructura de un archivo XML se puede representar como un árbo
 
 En esta lección vamos a ver como cargar un archivo XML dentro de un HTML, existe la posibilidad de escribir el contenido XML directamente en el HTML por medio de una etiqueta pero es más común que esté contenido en su propio archivo XML. Esto también se puede deber que existan procesos como los Web Services que nos proveen ya estos archivos XML directamente y desde el HTML solo queremos cargarlos.
 
-Vamos a crear el archivo HTML `libros.html` con el siguiente contenido:
+Vamos a crear el archivo HTML `3003_libros.html` con el siguiente contenido:
 
 ```html
 <!DOCTYPE html>
@@ -131,7 +131,7 @@ Dependiendo del navegador que estemos usando vamos a crear el objeto `XMLHttpReq
 
 Una vez que ya tenemos creado nuestro objeto `XMLHttpRequest` vamos a usar el método `open` donde le indicamos que vamos a leer el archivo `libros.xml` (si estuvierá en otra ruta se le indicaría) por medio del método `GET`, el parámetro `false` nos permite indicarle que no interprete lo que leemos.
 
-Si cargamos el archivo `libros.html` no va a pasar nada, por que aún no estamos haciendo nada con la respuesta obtenida, simplemente estamos mostrando unos mensajes en la consola para seguir la traza de lo que se esta haciendo.
+Si cargamos el archivo `3003_libros.html` no va a pasar nada, por que aún no estamos haciendo nada con la respuesta obtenida, simplemente estamos mostrando unos mensajes en la consola para seguir la traza de lo que se esta haciendo.
 
 ![21-01](images/21-01.png)
 
@@ -147,13 +147,13 @@ Esto nos abrirá el mismo archivo dentro del Servidor.
 
 Como podemos observar ya no nos marca los errores del CORS.
 
-Pero también observamos que no nos carga el resultado de leer el archivo `libros.xml` ya que nos lo esta colocando como `null`.
+Pero también observamos que no nos carga el resultado de leer el archivo `3003_libros.html` ya que nos lo esta colocando como `null`.
 
 Revisando el tutorial de [XML de W3School](https://www.w3schools.com/xml/default.asp) hay otra forma de crear el HTML y parece que si nos regresa un valor como respuesta de la lectura del archivo `libros.xml`.
 
-Vamos a crear el archivo alternativo HTML que llamaremos `libros2.html` con el siguiente contenido:
+Vamos a crear el archivo alternativo HTML que llamaremos `3004_libros.html` con el siguiente contenido:
 
-`libros2.html`
+`3004_libros.html`
 
 ```html
 <!DOCTYPE html>
@@ -170,7 +170,7 @@ Vamos a crear el archivo alternativo HTML que llamaremos `libros2.html` con el s
             console.log(xhttp.responseXML);    
          }
       };
-      xhttp.open("GET", "libros.xml", true);
+      xhttp.open("GET", "2002_libros_con_css.xml", true);
       xhttp.send();      
    </script>
 </head>
@@ -180,9 +180,11 @@ Vamos a crear el archivo alternativo HTML que llamaremos `libros2.html` con el s
 </html>
 ```
 
-![21-04](images/21-04.png)
+![021-04](images/021-04.png)
 
 ## 22.- Propiedades y Métodos para Analizar un Archivo XML 07:23
+
+![022-01](images/022-01.png)
 
 ### Propiedades
 
@@ -193,6 +195,8 @@ Algunas de las propiedades que nos van a permitir trabajar con archivos XML son 
 * `x.parentNode`: Nos devuelve el nombre del nodo padre del nodo x.
 * `x.childNodes`: Nos devuelve los nodos hijos del nodo x en un `array`.
 * `x.attributes`: Nos devuelve los atributos del nodo x en un `array`.
+
+![022-02](images/022-02.png)
 
 ### Métodos
 
@@ -210,13 +214,15 @@ La representación en árbol que ya habíamos visto es la siguiente:
 
 Si usamos la siguiente instrucción:
 
+![022-03](images/022-03.png)
+
 ```xml
 libro = xmlDoc.getElementsByTagName("nombre")[0].childNodes[0].nodeValue;
 ```
 
 Lo que estamos haciendo es que tomamos nuestro objeto `xmlDoc` que ya nos retorna todo el contenido de nuestro archivo `libros.xml` del cual con el método `getElementsByTagName("nombre")` vamos a obtener todos los elementos que tengan como nombre de etiqueta `"nombre"`, si vemos el arbol hay dos elementos con una etiqueta llamada `"nombre"`,  esto nos lo retorna en un array, del cual estamos tomando el primer elemento gracias a que estamos usando `[0]`, una vez que ya tenemos ese primer elemento `nombre` en nuestro diagrama vemos que es un elemento hoja, en teoría ya no tiene hijos, pero realmente el texto de este elemento es un hijo del elemento y lo estamos recuperando con `childNodes` esto recupera un array con todos los hijos, para recuperar el primer elemento de ese array usamos `childNodes[0]` que es el único que hay y con `nodeValue` vamos a recuperar el valor del texto que en teoría debería ser: `El Quijote de la Mancha`.
 
-Vamos a editar nuestro archivo `libros2.html`
+Vamos a editar nuestro archivo `3004_libros.html`
 
 ```html
 <!DOCTYPE html>
@@ -281,6 +287,45 @@ En este caso como ya no existe un cuarto nodo nos manda el siguiente error:
 
 ![22-04](images/22-04.png)
 ![22-05](images/22-05.png)
+
+`3005_libros.html`
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Libros</title>
+   <script>
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+         if (this.readyState == 4 && this.status == 200) {
+            xmlDoc = xhttp.responseXML; 
+            titulo = xmlDoc.getElementsByTagName("nombre")[0].childNodes[0].nodeValue;
+            console.log("Título: " + titulo);
+            titulo = xmlDoc.getElementsByTagName("nombre")[1].childNodes[0].nodeValue;
+            console.log("Título: " + titulo);
+            titulo = xmlDoc.getElementsByTagName("nombre")[2].childNodes[0].nodeValue;
+            console.log("Título: " + titulo);
+            titulo = xmlDoc.getElementsByTagName("nombre")[3].childNodes[0].nodeValue;
+            console.log("Título: " + titulo);
+               
+         }
+      };
+      xhttp.open("GET", "02_libros_con_css.xml", true);
+      xhttp.send();      
+   </script>
+</head>
+<body>
+    
+</body>
+</html>
+```
+
+![22-06](images/22-06.png)
+
 
 ## 23.- Recorrer un Documento XML con las Instrucciones DOM 13:33
 
