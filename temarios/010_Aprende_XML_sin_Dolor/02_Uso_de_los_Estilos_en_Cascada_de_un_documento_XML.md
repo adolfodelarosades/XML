@@ -1,13 +1,13 @@
 # 02. Uso de los Estilos en Cascada de un documento XML • 4 clases • 25m
 
-* 15.- Ligar un Archivo XML a un Archivo CSS CSS 05:38
+* 15.- Ligar un Archivo XML a un Archivo CSS 05:38
 * 16.- Crear el Archivo de Estilos en Cascada con las Etiquetas Generales 06:15
 * 17.- Crear los Estilos en Cascada para los Subnodos de XML 06:56
 * 18.- Manejar los Atributos y Colocar Cadenas Antes y Después de los Nodos 06:31
 
 ## 15.- Ligar un Archivo XML a un Archivo CSS 05:38
 
-Vamos a partir del siguiente archivo XML `libros.xml`.
+Vamos a partir del siguiente archivo XML `1001_libros.xml`.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -70,7 +70,26 @@ libro{
 
 ![16-01](images/16-01-1.png)
 
-Si cargamos el archivo `libros.xml` vamos a tener:
+Si cargamos el archivo `2002_libros_con_css.xml` 
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="css/libros.css"?>
+<libros>
+<libro>
+    <nombre paginas="600">El Quijote de la Mancha</nombre>
+    <autor>Miguel de Cervantes</autor>
+    <editorial>Una muy vieja</editorial>
+</libro>
+<libro>
+    <nombre paginas="500">Cien años de soledad</nombre>
+    <autor>Gabriel García Márquez</autor>
+    <editorial>Obeja Negra</editorial>
+</libro>
+</libros>
+```
+
+vamos a tener:
 
 ![16-02](images/16-02.png)
 
@@ -116,6 +135,28 @@ editorial{
 
 Hemos añadido un nuevo libro.
 
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="css/libros.css"?>
+<libros>
+<libro>
+    <nombre paginas="600">El Quijote de la Mancha</nombre>
+    <autor>Miguel de Cervantes</autor>
+    <editorial>Una muy vieja</editorial>
+</libro>
+<libro>
+    <nombre paginas="500">Cien años de soledad</nombre>
+    <autor>Gabriel García Márquez</autor>
+    <editorial>Obeja Negra</editorial>
+</libro>
+<libro>
+    <nombre paginas="600">La guerra del fin del mundo</nombre>
+    <autor>Mario Vargas Llosa</autor>
+    <editorial>El barco de vapor</editorial>
+</libro>
+</libros>
+```
+
 ![17-02](images/17-02.png)
 
 Y al cargar el archivo en el navegador lo vemos de la siguiente forma:
@@ -157,7 +198,29 @@ Si cargamos el navegador tenemos:
 
 Ya nos pone un texto previo para identificar tanto al *Autor* como a la *Editorial*.
 
-Ahora vamos a hacer que nos pinte el número de páginas después del título del libro, para ello tenemos que hacer un cambio en nuestro archivo `libros.xml`, vamos a cambiar el atributo `paginas` que actualmente tenemos en `libro` lo vamos a poner dentro de la etiqueta `nombre`, nos queda así:
+Ahora vamos a hacer que nos pinte el número de páginas después del título del libro, para ello tenemos que hacer un cambio en nuestro archivo `2002_libros_con_css.xml`, vamos a cambiar el atributo `paginas` que actualmente tenemos en `libro` lo vamos a poner dentro de la etiqueta `nombre`, nos queda así:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="css/libros.css"?>
+<libros>
+<libro>
+    <nombre paginas="600">El Quijote de la Mancha</nombre>
+    <autor>Miguel de Cervantes</autor>
+    <editorial>Una muy vieja</editorial>
+</libro>
+<libro>
+    <nombre paginas="500">Cien años de soledad</nombre>
+    <autor>Gabriel García Márquez</autor>
+    <editorial>Obeja Negra</editorial>
+</libro>
+<libro>
+    <nombre paginas="600">La guerra del fin del mundo</nombre>
+    <autor>Mario Vargas Llosa</autor>
+    <editorial>El barco de vapor</editorial>
+</libro>
+</libros>
+```
 
 ![18-03](images/18-03.png)
 
@@ -178,7 +241,7 @@ Al cargar el archivo `libros.xml` en el navegador vemos lo siguiente:
 
 ## :computer: Archivos Finales.
 
-`libro.xml`
+`2002_libros_con_css.xml`
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -249,8 +312,3 @@ editorial{
 }
 editorial:before{content: "Editorial: ";}
 ```
-
-
-
-
-
