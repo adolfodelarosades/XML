@@ -335,6 +335,151 @@ Lo primero que vamos a hacer es un ***script para que nos despliegue la lista de
 
 Lo vamos a hacer el el archivo `3006_libros.html`
 
+Vamos ir haciendolo paso a paso hasta llegar al resultado final
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Libros</title>
+   <script>
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+         if (this.readyState == 4 && this.status == 200) {
+            xmlDoc = xhttp.responseXML;
+            titulos = xmlDoc.getElementsByTagName("nombre");
+            for(var i=0; i < titulos.length; i++){
+               document.write(titulos[i] + "<br>");
+            } 
+         }
+      };
+      xhttp.open("GET", "2002_libros_con_css.xml", true);
+      xhttp.send();      
+   </script>
+</head>
+<body>
+    
+</body>
+</html>
+```
+
+En el navegador tenemos:
+
+![023-02](images/023-02.png)
+
+Lo que nos indica esto es que estamos obteniendo como resultado un `[object Element]`, es decir un objeto XML de tipo `Element`. Necesitamos bajarnos un nivel más a los `childNodes`.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Libros</title>
+   <script>
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+         if (this.readyState == 4 && this.status == 200) {
+            xmlDoc = xhttp.responseXML;
+            titulos = xmlDoc.getElementsByTagName("nombre");
+            for(var i=0; i < titulos.length; i++){
+               document.write(titulos[i].childNodes + "<br>");
+            } 
+         }
+      };
+      xhttp.open("GET", "2002_libros_con_css.xml", true);
+      xhttp.send();      
+   </script>
+</head>
+<body>
+    
+</body>
+</html>
+```
+
+En el navegador tenemos:
+
+![023-03](images/023-03.png)
+
+Lo que nos indica esto es que estamos obteniendo como resultado un `[object NodeList]`, es decir un objeto XML de tipo `NodeList`. Un `NodeList` es una lista de nodos o un array de nodos. Podríamos recorrer este array o acceder a un elemento en particular.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Libros</title>
+   <script>
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+         if (this.readyState == 4 && this.status == 200) {
+            xmlDoc = xhttp.responseXML;
+            titulos = xmlDoc.getElementsByTagName("nombre");
+            for(var i=0; i < titulos.length; i++){
+               document.write(titulos[i].childNodes[0] + "<br>");
+            } 
+         }
+      };
+      xhttp.open("GET", "2002_libros_con_css.xml", true);
+      xhttp.send();      
+   </script>
+</head>
+<body>
+    
+</body>
+</html>
+```
+
+En el navegador tenemos:
+
+![023-04](images/023-04.png)
+
+Lo que nos indica esto es que estamos obteniendo como resultado un `[object Text]`, es decir un objeto XML de tipo `Text`. Sabemos que cada `Text` tiene un valor al cual vamos a acceder.
+
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Libros</title>
+   <script>
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+         if (this.readyState == 4 && this.status == 200) {
+            xmlDoc = xhttp.responseXML;
+            titulos = xmlDoc.getElementsByTagName("nombre");
+            for(var i=0; i < titulos.length; i++){
+               document.write(titulos[i].childNodes[0].nodeValue + "<br>");
+            } 
+         }
+      };
+      xhttp.open("GET", "2002_libros_con_css.xml", true);
+      xhttp.send();      
+   </script>
+</head>
+<body>
+    
+</body>
+</html>
+```
+
+En el navegador tenemos:
+
+![023-05](images/023-05.png)
+
+Finalmente llegamos al valor de cada uno de los títulos de cada libro.
+
+El resultado formateado final es:
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
