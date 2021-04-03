@@ -331,9 +331,9 @@ En este caso como ya no existe un cuarto nodo nos manda el siguiente error:
 
 Ahora lo que vamos a hacer son diferentes Scripts para recorrer el Documento XML mediante el árbol XML representado por el DOM.
 
-Lo primero que vamos a hacer es un ***script para que nos despliegue la lista de todos los títulos de los libros*** contenidos en el archivo `libros.xml`.
+Lo primero que vamos a hacer es un ***script para que nos despliegue la lista de todos los títulos de los libros*** contenidos en el archivo `2002_libros_con_css.xml`.
 
-Lo vamos a hacer el el archivo `libros3.html`
+Lo vamos a hacer el el archivo `3006_libros.html`
 
 ```html
 <!DOCTYPE html>
@@ -350,11 +350,12 @@ Lo vamos a hacer el el archivo `libros3.html`
             xmlDoc = xhttp.responseXML;
             titulos = xmlDoc.getElementsByTagName("nombre");
             for(var i=0; i < titulos.length; i++){
-               document.write(titulos[i].childNodes[0].nodeValue + "<br>");
-            }
+               document.write("Titulo: " + titulos[i].childNodes[0].nodeValue + "<br>");
+            } 
+            document.write("<br><br><br>");
          }
       };
-      xhttp.open("GET", "libros.xml", true);
+      xhttp.open("GET", "2002_libros_con_css.xml", true);
       xhttp.send();      
    </script>
 </head>
@@ -366,7 +367,7 @@ Lo vamos a hacer el el archivo `libros3.html`
 
 En el navegador tenemos:
 
-![23-01](images/23-01.png)
+![023-01](images/023-01.png)
 
 ### Tipos de Nodos
 
