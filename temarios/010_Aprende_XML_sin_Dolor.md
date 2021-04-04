@@ -46,7 +46,7 @@ La poderosa herramienta que mueve a Internet
 * 23.- Recorrer un Documento XML con las Instrucciones DOM 13:33
 * 24.- Extraer el Valor de los Atributos con `getNamedItem()` 06:46
 
-### 04. La Herramienta XPath • 8 clases • 41m
+### [04. La Herramienta XPath](https://github.com/adolfodelarosades/XML/blob/main/temarios/010_Aprende_XML_sin_Dolor/04_XPath.md) • 8 clases • 41m
 
 * 25.- Introducción a XPath 04:16
 * 26.- Elementos de una Cadena XPath 04:20
