@@ -533,6 +533,254 @@ Tipo de Nodo | Nombre de Constante
 11 | DOCUMENT_FRAGMENT_NODE
 12 | NOTATION_NODE
 
+Vamos a ver los tipos de nodos y sus nombres con nuestro ejemplo:
+
+
+`3007_libros.html`
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Libros</title>
+   <script>
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+         if (this.readyState == 4 && this.status == 200) {
+            xmlDoc = xhttp.responseXML;
+            console.log(xmlDoc);
+            //De todo el documento recuperar los nodos hijos
+            var libros = xmlDoc.documentElement.childNodes; 
+            console.log(libros);
+            for(var i=0; i < libros.length; i++){
+               document.write(libros[i].nodeType + ", " + libros[i].nodeName + "<br>");   
+            } 
+         }
+      };
+      xhttp.open("GET", "2002_libros_con_css.xml", true);
+      xhttp.send();      
+   </script>
+</head>
+<body>
+    
+</body>
+</html>
+```
+
+![023-06](images/023-06.png)
+
+En este caso solo tenemos Nodos del tipo 1 y 3.
+
+Podríamos recuperar solamente los de tipo 1, es decir de tipo Nodo.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Libros</title>
+   <script>
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+         if (this.readyState == 4 && this.status == 200) {
+            xmlDoc = xhttp.responseXML;
+            console.log(xmlDoc);
+            //De todo el documento recuperar los nodos hijos
+            var libros = xmlDoc.documentElement.childNodes; 
+            console.log(libros);
+            for(var i=0; i < libros.length; i++){
+               if(libros[i].nodeType == 1){
+                  document.write(libros[i].nodeName + "<br>");   
+               }       
+            } 
+         }
+      };
+      xhttp.open("GET", "2002_libros_con_css.xml", true);
+      xhttp.send();      
+   </script>
+</head>
+<body>
+    
+</body>
+</html>
+```
+
+![023-07](images/023-07.png)
+
+Podemos ir más alla y recuperar más datos del Nodo.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Libros</title>
+   <script>
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+         if (this.readyState == 4 && this.status == 200) {
+            xmlDoc = xhttp.responseXML;
+            console.log(xmlDoc);
+            //De todo el documento recuperar los nodos hijos
+            var libros = xmlDoc.documentElement.childNodes; 
+            console.log(libros);
+            for(var i=0; i < libros.length; i++){
+               
+               if(libros[i].nodeType == 1){
+                  document.write(libros[i].nodeName + "<br>");   
+                  libro = libros[i].childNodes;
+                  document.write("Este nodo tiene: " + libro.length + " hijos. <br>");
+               }       
+            } 
+         }
+      };
+      xhttp.open("GET", "2002_libros_con_css.xml", true);
+      xhttp.send();      
+   </script>
+</head>
+<body>
+    
+</body>
+</html>
+```
+
+![023-08](images/023-08.png)
+
+Por cada Nodo Libro nos dice que tiene 7 hijos, estos son `nombre`, `autor`, `editorial`, con sus respectivos textos más el atributo `paginas`.
+
+Vamos a recuperar todos los datos de nuestros libros en el archivo `3008_libros.html`:
+
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Libros</title>
+   <script>
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+         if (this.readyState == 4 && this.status == 200) {
+            xmlDoc = xhttp.responseXML;            
+            var libros = xmlDoc.documentElement.childNodes;
+
+            for(var i=0; i < libros.length; i++){
+               if(libros[i].nodeType == 1){
+                  libro = libros[i].childNodes;
+                  document.write(libro[1].nodeName + ": " + libro[1].childNodes[0].nodeValue + "<br>");
+                  document.write(libro[3].nodeName + ": " + libro[3].childNodes[0].nodeValue + "<br>");
+                  document.write(libro[5].nodeName + ": " + libro[5].childNodes[0].nodeValue + "<br>");
+                  document.write("-----------------------------------------------------------<br>");
+               }       
+            } 
+         }
+      };
+      xhttp.open("GET", "2002_libros_con_css.xml", true);
+      xhttp.send();      
+   </script>
+</head>
+<body>
+    
+</body>
+</html>
+```
+
+![023-09](images/023-09.png)
 
 
 ## 24.- Extraer el Valor de los Atributos con `getNamedItem()` 06:46
+
+Vamos a continuar con el ejemplo de la sección anterior pero en lugar de poner harcodeado el nombre del nodo vamos a usar la propiedadad para obtener su valor:
+
+`3009_libros.html`
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Libros</title>
+   <script>
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+         if (this.readyState == 4 && this.status == 200) {
+            xmlDoc = xhttp.responseXML;            
+            var libros = xmlDoc.documentElement.childNodes;
+
+            for(var i=0; i < libros.length; i++){
+               if(libros[i].nodeType == 1){
+                  libro = libros[i].childNodes;
+                  document.write(libro[1].nodeName + ": " + libro[1].childNodes[0].nodeValue + "<br>");
+                  document.write(libro[3].nodeName + ": " + libro[3].childNodes[0].nodeValue + "<br>");
+                  document.write(libro[5].nodeName + ": " + libro[5].childNodes[0].nodeValue + "<br>");
+                  document.write("-----------------------------------------------------------<br>");
+               }       
+            } 
+         }
+      };
+      xhttp.open("GET", "2002_libros_con_css.xml", true);
+      xhttp.send();      
+   </script>
+</head>
+<body>
+    
+</body>
+</html>
+```
+
+![024-01](images/024-01.png)
+
+Ahora lo que vamos a hacer es recuperar el valor del atributo `paginas`:
+
+`3010_libros.html`
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Libros</title>
+   <script>
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+         if (this.readyState == 4 && this.status == 200) {
+            xmlDoc = xhttp.responseXML;            
+            var libros = xmlDoc.documentElement.childNodes;
+
+            for(var i=0; i < libros.length; i++){
+               if(libros[i].nodeType == 1){
+                  libro = libros[i].childNodes;
+                  document.write(libro[1].nodeName + ": " + libro[1].childNodes[0].nodeValue );
+                  paginas = libro[1].attributes.getNamedItem("paginas").nodeValue;
+                  document.write(", " + paginas + " páginas <br>");
+                  document.write(libro[3].nodeName + ": " + libro[3].childNodes[0].nodeValue + "<br>");
+                  document.write(libro[5].nodeName + ": " + libro[5].childNodes[0].nodeValue + "<br>");
+                  document.write("-----------------------------------------------------------<br>");
+               }       
+            } 
+         }
+      };
+      xhttp.open("GET", "2002_libros_con_css.xml", true);
+      xhttp.send();      
+   </script>
+</head>
+<body>
+    
+</body>
+</html>
+```
+
+![024-02](images/024-02.png)
