@@ -57,7 +57,7 @@ La poderosa herramienta que mueve a Internet
 * 31.- Uso de Predicados en las Expresiones XPath 02:41
 * 32.- Seleccionar los Nodos Bajo un Criterio en XPath 04:32
 
-### 05. XSLT:EXtensible Stylesheet Language • 8 clases • 41m  
+### [05. XSLT:EXtensible Stylesheet Language](https://github.com/adolfodelarosades/XML/blob/main/temarios/010_Aprende_XML_sin_Dolor/05_XSLT.md) • 8 clases • 41m  
 
 * 33.- Introducción a XSLT 06:44
 * 34.- Crear un Template con XSL 09:59
