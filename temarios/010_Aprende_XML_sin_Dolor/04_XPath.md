@@ -38,7 +38,7 @@ En esencia vamos a generar una cadena que nos va a permitir navegar a través de
 ![26-05](images/26-05.png)
 
 ## 27.- Cargar un Archivo Externo con `XMLHttpRequest` 09:35
-
+ 
 Vamos a partir del archivo XML que hemos ido trabajando pero a cada libro le vamos a añadir dos subnodos más `precio` y `fecha` lo llamaremos `4001_libros_con_xpath.xml`:
 
 ```xml
@@ -71,8 +71,7 @@ Vamos a partir del archivo XML que hemos ido trabajando pero a cada libro le vam
 
 Ahora vamos a cargar este archivo XML mediante `XMLHttpRequest` en un archivo HTML llamado `4002_libros_con_xpath.html`:
 
-```html
-<!DOCTYPE html>
+```html<!DOCTYPE html>
 <html>
 <head>
     <meta charset='utf-8'>
@@ -107,6 +106,7 @@ Ahora vamos a cargar este archivo XML mediante `XMLHttpRequest` en un archivo HT
             var x = cargaXML("4001_libros_con_xpath.xml");
             var xml = x.responseXML;
             var path = "libros/libro/nombre";
+            alert(xml);
             console.log(xml);
         }
     </script>
@@ -117,7 +117,30 @@ Ahora vamos a cargar este archivo XML mediante `XMLHttpRequest` en un archivo HT
 </html>
 ```
 
+![27-00](images/27-00.png)
+
+Nos indica que recuperamos un objeto de tipo XMLDocument `[object XMLDocument]`. Desglosado lo muestra así:
+
 ![27-01](images/27-01.png)
+
+
+## 28.- Utilizar las Instrucciones `xml.evaluate()` y `xml.iterateNext()` 08:39
+
+![28-01](images/28-01.png)
+
+![28-02](images/28-02.png)
+
+![28-03](images/28-03.png)
+
+![28-04](images/28-04.png)
+
+![28-05](images/28-05.png)
+
+![28-06](images/28-06.png)
+
+![28-07](images/28-07.png)
+
+![28-08](images/28-08.png)
 
 `4003_libros_con_xpath.html`
 
@@ -167,6 +190,12 @@ Ahora vamos a cargar este archivo XML mediante `XMLHttpRequest` en un archivo HT
 
 ![27-02](images/27-02.png)
 
+## 29.- Evaluar una Expresión XPath en Internet Explorer 05:11
+
+## 30.- Los Arreglos de Datos en XPath 02:07
+
+Los arreglos en XPath empiezan en 1, no en 0 como es tradicional.
+
 `4004_libros_con_xpath.html`
 
 ```html
@@ -207,7 +236,11 @@ Ahora vamos a cargar este archivo XML mediante `XMLHttpRequest` en un archivo HT
 </html>
 ```
 
+Solo nos trae el primer libro que es el que indicamos en `var path = "/libros/libro[1]/nombre";`
+
 ![27-03](images/27-03.png)
+
+## 31.- Uso de Predicados en las Expresiones XPath 02:41
 
 `4005_libros_con_xpath.html`
 
@@ -250,7 +283,12 @@ Ahora vamos a cargar este archivo XML mediante `XMLHttpRequest` en un archivo HT
 </body>
 </html>
 ```
+
+Con `var path = "/libros/libro/autor[text()]";` estamos usando un predicado para autor donde traemos solo el texto.
+
 ![27-04](images/27-04.png)
+
+Podemos hacer una modificación para que los valores de los autores aparezcan en un Combo. Podríamos hacer algo más para que al seleccionar un autor nos trajera su información, pero aquí solo vamos a pintar el combo.
 
 `4006_libros_con_xpath.html`
 
@@ -295,6 +333,11 @@ Ahora vamos a cargar este archivo XML mediante `XMLHttpRequest` en un archivo HT
 ```
 
 ![27-05](images/27-05.png)
+
+
+## 32.- Seleccionar los Nodos Bajo un Criterio en XPath 04:32
+
+Podemos meter criterios para seleccionar ciertos nodos, en este ejemplo vemos varios ejemplos de criterios para seleccionar ciertos nodos.
 
 `4007_libros_con_xpath.html`
 
@@ -343,11 +386,7 @@ Ahora vamos a cargar este archivo XML mediante `XMLHttpRequest` en un archivo HT
 </html>
 ```
 
+Nos muestra los precios mayores o iguales a 300.
+
 ![27-06](images/27-06.png)
 
-## 27.- Cargar un Archivo Externo con `XMLHttpRequest` 09:35s 
-## 28.- Utilizar las Instrucciones `xml.evaluate()` y `xml.iterateNext()` 08:39
-## 29.- Evaluar una Expresión XPath en Internet Explorer 05:11
-## 30.- Los Arreglos de Datos en XPath 02:07
-## 31.- Uso de Predicados en las Expresiones XPath 02:41
-## 32.- Seleccionar los Nodos Bajo un Criterio en XPath 04:32
