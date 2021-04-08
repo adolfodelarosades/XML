@@ -100,7 +100,7 @@ Este libro contiene veinte capítulos y ocho apéndices (el último de los cuale
 ### About the Author
 ### Credits
 ### Acknowledgments
-### [Introduction](https://github.com/adolfodelarosades/XML/blob/main/temarios/300_XSLT-2-and-XPath-2/00_Introduction.md)
+## [Introduction](https://github.com/adolfodelarosades/XML/blob/main/temarios/300_XSLT-2-and-XPath-2/00_Introduction.md)
 * Who This Book Is For
 * What This Book Covers
 * How This Book Is Structured
@@ -143,7 +143,7 @@ Este libro contiene veinte capítulos y ocho apéndices (el último de los cuale
 * Errata
 * p2p.wrox.com
 
-## List of Examples
+## [List of Examples](https://github.com/adolfodelarosades/XML/blob/main/temarios/300_XSLT-2-and-XPath-2/000.Lista.md)
 * Chapter 1
 * Chapter 2
 * Chapter 3
