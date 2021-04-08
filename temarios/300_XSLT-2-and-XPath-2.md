@@ -165,7 +165,7 @@ Este libro contiene veinte capítulos y ocho apéndices (el último de los cuale
 #### 1.1. What Is XSLT?
 ##### 1.1.1. Why Version 2.0?
 ##### 1.1.2. A Scenario: Transforming Music
-1.2. How Does XSLT Transform XML?
+#### 1.2. How Does XSLT Transform XML?
 ##### 1.2.1. XSLT and SQL: An Analogy
 ##### 1.2.2. XSLT Processors
 ##### 1.2.3. A Simple XSLT Stylesheet
@@ -192,7 +192,7 @@ Este libro contiene veinte capítulos y ocho apéndices (el último de los cuale
 ##### 1.5.5. A Two-Language System: XSLT and XPath
 #### 1.6. Summary
 
-2. The XSLT Processing Model
+### 2. The XSLT Processing Model
 2.1. XSLT: A System Overview
 2.1.1. A Simplified Overview
 2.1.2. Trees, Not Documents
@@ -241,7 +241,7 @@ Este libro contiene veinte capítulos y ocho apéndices (el último de los cuale
 2.5.5. Temporary Documents
 2.6. Summary
 
-3. Stylesheet Structure
+### 3. Stylesheet Structure
 3.1. Changes in XSLT 2.0
 3.2. The Modular Structure of a Stylesheet
 3.3. The <xsl:stylesheet> Element
@@ -284,7 +284,7 @@ Este libro contiene veinte capítulos y ocho apéndices (el último de los cuale
 3.10.3.2. Too Little Whitespace
 3.11. Summary
 
-4. Stylesheets and Schemas
+### 4. Stylesheets and Schemas
 4.1. XML Schema: An Overview
 4.1.1. Simple Type Definitions
 4.1.2. Elements with Attributes and Simple Content
@@ -304,7 +304,7 @@ Este libro contiene veinte capítulos y ocho apéndices (el último de los cuale
 4.11. Nillability
 4.12. Summary
 
-5. Types
+### 5. Types
 5.1. What Is a Type System?
 5.2. Changes in 2.0
 5.3. Sequences
@@ -337,9 +337,9 @@ Este libro contiene veinte capítulos y ocho apéndices (el último de los cuale
 5.8. Static and Dynamic Type Checking
 5.9. Summary
 
-II. XSLT and XPath Reference
+## II. XSLT and XPath Reference
 
-6. XSLT Elements
+### 6. XSLT Elements
 6.1. xsl:analyze-string
 6.1.1. Changes in 2.0
 6.1.2. Format
@@ -929,7 +929,7 @@ II. XSLT and XPath Reference
 6.49.5. See Also
 6.50. Summary
 
-7. XPath Fundamentals
+### 7. XPath Fundamentals
 7.1. Notation
 7.2. Where to Start
 7.3. Expressions
@@ -987,7 +987,7 @@ II. XSLT and XPath Reference
 7.11.2.6. Available Documents and Collections
 7.12. Summary
 
-8. XPath: Operators on Items
+### 8. XPath: Operators on Items
 8.1. Arithmetic Operators
 8.1.1. Syntax
 8.1.2. Type Promotion
@@ -1022,7 +1022,7 @@ II. XSLT and XPath Reference
 8.5.2. Examples
 8.6. Summary
 
-9. XPath: Path Expressions
+### 9. XPath: Path Expressions
 9.1. Examples of Path Expressions
 9.2. Changes in XPath 2.0
 9.3. Document Order and Duplicates
@@ -1069,7 +1069,7 @@ II. XSLT and XPath Reference
 9.8.5. Sets of Atomic Values
 9.9. Summary
 
-10. XPath: Sequence Expressions
+### 10. XPath: Sequence Expressions
 10.1. The Comma Operator
 10.1.1. Examples
 10.2. Numeric Ranges: The «to» Operator
@@ -1089,7 +1089,7 @@ II. XSLT and XPath Reference
 10.6.3. Errors in «some» and «every» Expressions
 10.7. Summary
 
-11. XPath: Type Expressions
+### 11. XPath: Type Expressions
 11.1. Converting Atomic Values
 11.1.1. Converting between Primitive Types
 11.1.1.1. Converting from anyURI
@@ -1127,7 +1127,7 @@ II. XSLT and XPath Reference
 11.4. The «treat as» Operator
 11.5. Summary
 
-12. XSLT Patterns
+### 12. XSLT Patterns
 12.1. Patterns and Expressions
 12.2. Changes in XSLT 2.0
 12.3. The Formal Definition
@@ -1171,7 +1171,7 @@ II. XSLT and XPath Reference
 12.7.5.3. Examples
 12.8. Summary
 
-13. The Function Library
+### 13. The Function Library
 13.1. A Word about Naming
 13.2. Functions by Category
 13.2.1. Boolean Functions
@@ -1889,7 +1889,7 @@ II. XSLT and XPath Reference
 13.5.118.5. See Also
 13.6. Summary
 
-14. Regular Expressions
+### 14. Regular Expressions
 14.1. Branches and Pieces
 14.2. Quantifiers
 14.3. Atoms
@@ -1908,7 +1908,7 @@ II. XSLT and XPath Reference
 14.12. Disallowed Constructs
 14.13. Summary
 
-15. Serialization
+### 15. Serialization
 15.1. The XML Output Method
 15.2. The HTML Output Method
 15.3. The XHTML Output Method
@@ -1925,9 +1925,9 @@ II. XSLT and XPath Reference
 15.7.4. Character Maps as a Substitute for disable-output-escaping
 15.8. Summary
 
-III. Exploitation
+## III. Exploitation
 
-16. Extensibility
+### 16. Extensibility
 16.1. What Vendor Extensions Are Allowed?
 16.2. Extension Functions
 16.2.1. When Are Extension Functions Needed?
@@ -1947,7 +1947,7 @@ III. Exploitation
 16.3. Keeping Extensions Portable
 16.4. Summary
 
-17. Stylesheet Design Patterns
+### 17. Stylesheet Design Patterns
 17.1. Fill-in-the-Blanks Stylesheets
 17.2. Navigational Stylesheets
 17.3. Rule-Based Stylesheets
@@ -1961,7 +1961,7 @@ III. Exploitation
 17.4.3.4. Recursion: Summary
 17.5. Summary
 
-18. Case Study: XMLSpec
+### 18. Case Study: XMLSpec
 18.1. Formatting the XML Specification
 18.2. Preface
 18.3. Creating the HTML Outline
@@ -1983,7 +1983,7 @@ III. Exploitation
 18.12.5. xmlspec.xsl
 18.13. Summary
 
-19. Case Study: A Family Tree
+### 19. Case Study: A Family Tree
 19.1. Modeling a Family Tree
 19.1.1. The GEDCOM Data Model
 19.1.2. Creating a Schema for GEDCOM 6.0
@@ -2012,7 +2012,7 @@ III. Exploitation
 19.3.2.5. Generating HTML in the Browser
 19.4. Summary
 
-20. Case Study: Knight's Tour
+### 20. Case Study: Knight's Tour
 20.1. The Problem
 20.2. The Algorithm
 20.2.1.
@@ -2027,20 +2027,20 @@ III. Exploitation
 20.7. Observations
 20.8. Summary
 
-IV. Appendices
+## IV. Appendices
 
-A. XPath 2.0 Syntax Summary
+### A. XPath 2.0 Syntax Summary
 A.1. Whitespace and Comments
 A.2. Tokens
 A.3. Syntax Productions
 A.4. Operator Precedence
 
-B. Error Codes
+### B. Error Codes
 B.1. Functions and Operators (FO)
 B.2. XPath Errors (XP)
 B.3. XSLT Errors (XT)
 
-C. Backward Compatibility
+### C. Backward Compatibility
 C.1. Stage 1: Backward-Compatibility Mode
 C.1.1. Deprecated Facilities
 C.1.2. Error Handling
@@ -2059,7 +2059,7 @@ C.2.7. Other XSLT Differences
 C.3. Stage 3: Adding a Schema
 C.4. Summary
 
-D. Microsoft XSLT Processors
+### D. Microsoft XSLT Processors
 D.1. MSXML
 D.1.1. Objects
 D.1.2. IXMLDOMDocument and IXMLDOMDocument2
@@ -2092,7 +2092,7 @@ D.2.4. XPathNavigator
 D.2.5. XSLTransform
 D.3. Summary
 
-E. JAXP: The Java API for Transformation
+### E. JAXP: The Java API for Transformation
 E.1. The JAXP Parser API
 E.1.1. JAXP Support for SAX
 E.1.1.1. javax.xml.parsers.SAXParserFactory
@@ -2131,7 +2131,7 @@ E.3.4. Example 4: Using the <?xml-stylesheet?> Processing Instruction
 E.3.5. Example 5: A SAX Pipeline
 E.4. Summary
 
-F. Saxon
+### F. Saxon
 F.1. Using Saxon from the Command Line
 F.2. Using Saxon from a Java Application
 F.2.1. Using Saxon via JAXP Interfaces
@@ -2153,7 +2153,7 @@ F.6.4. Extension Functions
 F.7. The evaluate() Extension
 F.8. Summary
 
-G. Altova
+### G. Altova
 G.1. Running from within XMLSpy
 G.2. Conformance
 G.3. Extensions and Extensibility
@@ -2166,4 +2166,4 @@ G.5.2. The Java API
 G.5.3. The .NET API
 G.6. Summary
 
-H. Glossary
+### H. Glossary
