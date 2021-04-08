@@ -290,6 +290,9 @@ Tenga en cuenta que esta vez, el resultado se muestra en términos de HTML sin p
 
 ![image](https://user-images.githubusercontent.com/23094588/114036819-aec03500-9880-11eb-98ab-be391063bfdd.png)
 
+![image](https://user-images.githubusercontent.com/23094588/114053747-8429a880-988f-11eb-811d-8a9aab5399f8.png)
+
+
 **Usando Saxon en Java desde la Línea de Comandos**
 
 Si es un desarrollador de software profesional, probablemente no sea reacio a ejecutar utilidades desde la línea de comandos, que es la forma natural de probar sus hojas de estilo cuando usa Saxon "listo para usar". Los pasos son los siguientes:
@@ -399,7 +402,64 @@ java -jar c:\saxon\saxon8.jar -s:hello.xml -xsl:hello.xsl -o:hello.html
 
 Habiendo examinado una hoja de estilo XSLT 1.0 muy simple, veamos ahora una hoja de estilo que usa características que son nuevas en XSLT 2.0.
 
-### 1.2.4. Una Hoja de estilo XSLT 2.0
+### 1.2.4. Una Hoja de Estilo XSLT 2.0
+
+Esta hoja de estilo es muy corta, pero se las arregla para utilizar cuatro o cinco nuevas funciones XSLT 2.0 y XPath 2.0 en el espacio de unas pocas líneas. Lo escribí en respuesta a una consulta de usuario planteada en la lista xsl en http://www.mulberrytech.com/ (un lugar excelente para conocer a otros desarrolladores XSLT con niveles de experiencia muy variados); por lo que es un problema real, no una invención. La solución XSLT 1.0 a este problema es de aproximadamente 60 líneas de código.
+
+#### 💻 Ejemplo: Tabulación Frecuencias de Palabras
+
+El problema se plantea simplemente: dado cualquier documento XML, producir una lista de las palabras que aparecen en su texto, dando el número de veces que aparece cada palabra, junto con su frecuencia.
+
+**Input**
+
+La entrada puede ser cualquier documento XML. Usaré el texto del ***Otelo de Shakespeare*** como ejemplo; se proporciona como `othello.xml` en los archivos de descarga de este libro.
+
+**Output**
+
+La salida requerida es un archivo XML que enumera palabras en orden decreciente de frecuencia. Si ejecuta la transformación con Kernow, la salida aparece como se muestra en la Figura 1-7.
+
+**Stylesheet**
+
+Aquí está la hoja de estilo que produce este resultado. Puede encontrarlo en `wordcount.xsl`.
+
+`wordcount.xsl`
+
+```xml
+<?xml version="1.0" encoding="iso-8859-1"?>
+<xsl:stylesheet
+   version="2.0"
+   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+<xsl:output method="xml" indent="yes"/>
+
+<xsl:template match="/">
+  <wordcount>
+    <xsl:for-each-group group-by="." select="
+          for $w in //text()/tokenize(., '\W+')[.!=''] return lower-case($w)">
+      <xsl:sort select="count(current-group())" order="descending"/>
+      <word word="{current-grouping-key()}" frequency="{count(current-group())}"/>
+    </xsl:for-each-group>
+  </wordcount>
+</xsl:template>
+
+</xsl:stylesheet>
+```
+
+```xml
+</xsl:for-each-group>
+  </wordcount>
+</xsl:template>
+</xsl:stylesheet>
+```
+
+Veamos cómo funciona esto.
+
+![image](https://user-images.githubusercontent.com/23094588/114051284-3ad85980-988d-11eb-8b4d-acbbe49474f8.png)
+
+![image](https://user-images.githubusercontent.com/23094588/114053179-01085280-988f-11eb-9571-9023907e0ac1.png)
+
+
+
 ## 1.3. El lugar de XSLT en la familia XML
 ### 1.3.1. Objetos de formato XSLT y XSL
 ### 1.3.2. XSLT y XPath
