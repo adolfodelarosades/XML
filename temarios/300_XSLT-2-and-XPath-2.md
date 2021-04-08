@@ -94,107 +94,103 @@ Este libro contiene veinte capítulos y ocho apéndices (el último de los cuale
 
 **Nota:** CD-ROM/DVD y otros materiales complementarios no se incluyen como parte del archivo de libro electrónico.
 
-### Table of Contents
+## Table of Contents
 
-Copyright
+### Copyright
+### About the Author
+### Credits
+### Acknowledgments
+### Introduction
+#### Who This Book Is For
+### What This Book Covers
+### How This Book Is Structured
+#### Part I: Foundations
+##### Chapter 1: XSLT in Context
+##### Chapter 2: The XSLT Processing Model
+##### Chapter 3: Stylesheet Structure
+##### Chapter 4: Stylesheets and Schemas
+##### Chapter 5: The Type System
+#### Part II: XSLT and XPath Reference
+##### Chapter 6: XSLT Elements
+##### Chapter 7: XPath Fundamentals
+##### Chapter 8: XPath: Operators on Items
+##### Chapter 9: XPath: Path Expressions
+##### Chapter 10: XPath: Sequence Expressions
+##### Chapter 11: XPath: Type Expressions
+##### Chapter 12: XSLT Patterns
+##### Chapter 13: The Function Library
+##### Chapter 14: Regular Expressions
+##### Chapter 15: Serialization
+#### Part III: Exploitation
+##### Chapter 16: Extensibility
+##### Chapter 17: Stylesheet Design Patterns
+##### Chapter 18: Case Study: XMLSpec
+##### Chapter 19: Case Study: A Family Tree
+##### Chapter 20: Case Study: Knight's Tour
+#### Part IV: Appendices
+##### Appendix A: XPath 2.0 Syntax Summary
+##### Appendix B: Error Codes
+##### Appendix C: Backward Compatibility
+##### Appendix D: Microsoft XSLT Processors
+##### Appendix E: JAXP: The Java API for XML Processing
+##### Appendix F: Saxon
+##### Appendix G: Altova
+##### Appendix H: Glossary
+##### Index
+### What You Need to Use This Book
+### Conventions
+### Downloading the Code
+### Errata
+### p2p.wrox.com
 
-About the Author
+## List of Examples
+### Chapter 1
+### Chapter 2
+### Chapter 3
+### Chapter 4
+### Chapter 6
+### Chapter 12
+### Chapter 13
+### Chapter 15
+### Chapter 16
+### Chapter 17
+### Chapter 18
+### Chapter 19
+### Chapter 20
+### Appendix F
 
-Credits
+## I. Foundations
 
-Acknowledgments
-
-Introduction
-Who This Book Is For
-What This Book Covers
-How This Book Is Structured
-Part I: Foundations
-Chapter 1: XSLT in Context
-Chapter 2: The XSLT Processing Model
-Chapter 3: Stylesheet Structure
-Chapter 4: Stylesheets and Schemas
-Chapter 5: The Type System
-Part II: XSLT and XPath Reference
-Chapter 6: XSLT Elements
-Chapter 7: XPath Fundamentals
-Chapter 8: XPath: Operators on Items
-Chapter 9: XPath: Path Expressions
-Chapter 10: XPath: Sequence Expressions
-Chapter 11: XPath: Type Expressions
-Chapter 12: XSLT Patterns
-Chapter 13: The Function Library
-Chapter 14: Regular Expressions
-Chapter 15: Serialization
-Part III: Exploitation
-Chapter 16: Extensibility
-Chapter 17: Stylesheet Design Patterns
-Chapter 18: Case Study: XMLSpec
-Chapter 19: Case Study: A Family Tree
-Chapter 20: Case Study: Knight's Tour
-Part IV: Appendices
-Appendix A: XPath 2.0 Syntax Summary
-Appendix B: Error Codes
-Appendix C: Backward Compatibility
-Appendix D: Microsoft XSLT Processors
-Appendix E: JAXP: The Java API for XML Processing
-Appendix F: Saxon
-Appendix G: Altova
-Appendix H: Glossary
-Index
-What You Need to Use This Book
-Conventions
-Downloading the Code
-Errata
-p2p.wrox.com
-
-List of Examples
-Chapter 1
-Chapter 2
-Chapter 3
-Chapter 4
-Chapter 6
-Chapter 12
-Chapter 13
-Chapter 15
-Chapter 16
-Chapter 17
-Chapter 18
-Chapter 19
-Chapter 20
-Appendix F
-
-I. Foundations
-
-1. XSLT in Context
-1.1. What Is XSLT?
-1.1.1. Why Version 2.0?
-1.1.2. A Scenario: Transforming Music
+### 1. XSLT in Context
+#### 1.1. What Is XSLT?
+##### 1.1.1. Why Version 2.0?
+##### 1.1.2. A Scenario: Transforming Music
 1.2. How Does XSLT Transform XML?
-1.2.1. XSLT and SQL: An Analogy
-1.2.2. XSLT Processors
-1.2.3. A Simple XSLT Stylesheet
-1.2.4. An XSLT 2.0 Stylesheet
-1.3. The Place of XSLT in the XML Family
-1.3.1. XSLT and XSL Formatting Objects
-1.3.2. XSLT and XPath
-1.3.3. XSLT and XML Namespaces
-1.3.4. XSLT and CSS
-1.3.5. XSLT and XML Schemas
-1.3.6. XSLT and XQuery
-1.4. The History of XSL
-1.4.1. Prehistory
-1.4.2. The First XSL Proposal
-1.4.3. Saxon
-1.4.4. Beyond XSLT 1.0
-1.4.5. Convergence with XQuery
-1.4.6. The Development of XSLT 2.0 and XPath 2.0
-1.5. XSLT 2.0 as a Language
-1.5.1. Use of XML Syntax
-1.5.2. No Side Effects
-1.5.3. Rule-Based
-1.5.4. Types Based on XML Schema
-1.5.5. A Two-Language System: XSLT and XPath
-1.6. Summary
+##### 1.2.1. XSLT and SQL: An Analogy
+##### 1.2.2. XSLT Processors
+##### 1.2.3. A Simple XSLT Stylesheet
+##### 1.2.4. An XSLT 2.0 Stylesheet
+#### 1.3. The Place of XSLT in the XML Family
+##### 1.3.1. XSLT and XSL Formatting Objects
+##### 1.3.2. XSLT and XPath
+##### 1.3.3. XSLT and XML Namespaces
+##### 1.3.4. XSLT and CSS
+##### 1.3.5. XSLT and XML Schemas
+##### 1.3.6. XSLT and XQuery
+#### 1.4. The History of XSL
+##### 1.4.1. Prehistory
+##### 1.4.2. The First XSL Proposal
+##### 1.4.3. Saxon
+##### 1.4.4. Beyond XSLT 1.0
+##### 1.4.5. Convergence with XQuery
+##### 1.4.6. The Development of XSLT 2.0 and XPath 2.0
+#### 1.5. XSLT 2.0 as a Language
+##### 1.5.1. Use of XML Syntax
+##### 1.5.2. No Side Effects
+##### 1.5.3. Rule-Based
+##### 1.5.4. Types Based on XML Schema
+##### 1.5.5. A Two-Language System: XSLT and XPath
+#### 1.6. Summary
 
 2. The XSLT Processing Model
 2.1. XSLT: A System Overview
