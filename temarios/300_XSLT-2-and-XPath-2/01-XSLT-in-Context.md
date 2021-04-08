@@ -274,9 +274,9 @@ La forma más sencilla de ejecutar este ejemplo es simplemente cargar el archivo
 
 ![image](https://user-images.githubusercontent.com/23094588/114035683-a0254e00-987f-11eb-849d-c3e359809f2b.png)
 
-**NOTA:** En Chrome no carga.
+El archivo debe cargarse en un un Servidor para evitar el error del Cors, en Chrome la salida es:
 
-![image](https://user-images.githubusercontent.com/23094588/114036060-06aa6c00-9880-11eb-9728-acc840fa56e7.png)
+![image](https://user-images.githubusercontent.com/23094588/114036060-06aa6c00-9880-11eb-9728-acc840fa56e7.png)![image](https://user-images.githubusercontent.com/23094588/114048115-8d644680-988a-11eb-96c1-202ad7ff14b0.png)
 
 Podemos ejecutar este ejemplo en el navegador porque en realidad es una hoja de estilo XSLT 1.0. La mayoría de los navegadores modernos admiten el procesamiento XSLT 1.0 de esta manera, pero en el momento de redactar este artículo, ninguno es compatible con XSLT 2.0.
 
@@ -300,7 +300,7 @@ Si es un desarrollador de software profesional, probablemente no sea reacio a ej
 
 3. Abra una ventana de consola estilo MSDOS (use Start
 
-Figura 1-4![image](https://user-images.githubusercontent.com/23094588/114037149-01015600-9881-11eb-8a92-fb69e3682edb.png)
+![image](https://user-images.githubusercontent.com/23094588/114037149-01015600-9881-11eb-8a92-fb69e3682edb.png)
 
 4. Escriba lo siguiente en el símbolo del sistema:
 
@@ -320,9 +320,86 @@ java -jar c:\saxon\saxon8.jar -a -s:hello.xml -o:hello.html
 
 **Uso del procesador XSLT de Altova**
 
-Puede obtener el producto independiente AltovaXML en www.altova.com. La versión actual en el momento de escribir este artículo es AltovaXML 2008. Incluye procesadores XSLT 1.0 y 2.0 independientes y un motor XQuery. El producto se instala de forma predeterminada en c: \ Archivos de programa \ Altova \ AltovaXML2008. Suponiendo que este directorio está en su RUTA, puede ejecutar nuestra transformación de ejemplo con la línea de comando:
+Puede obtener el producto independiente AltovaXML en www.altova.com. La versión actual en el momento de escribir este artículo es AltovaXML 2008. Incluye procesadores XSLT 1.0 y 2.0 independientes y un motor XQuery. El producto se instala de forma predeterminada en `c:\Program Files\Altova\AltovaXML2008`. Suponiendo que este directorio está en su PATH, puede ejecutar nuestra transformación de ejemplo con la línea de comando:
 
-### 1.2.4. Una hoja de estilo XSLT 2.0
+```sh
+AltovaXML -in hello.xml -xslt2 hello.xsl -out hello.html
+```
+
+**Usando XMLSpy**
+
+Si ha instalado XMLSpy, use File
+
+![image](https://user-images.githubusercontent.com/23094588/114043068-41af9e00-9886-11eb-80ce-9d79fa55665e.png)
+
+**Usando Stylus Studio**
+
+Stylus Studio utiliza su propio procesador XSLT integrado de forma predeterminada. Esto solo es compatible con XSLT 1.0, pero está bien para este ejemplo.
+
+Primero abra la hoja de estilo usando File
+
+Si desea usar XSLT 2.0 con Stylus Studio, elija la pestaña Procesador en el cuadro de diálogo Crear escenario y elija la versión más reciente de Saxon de la lista de procesadores ofrecidos (una de las características interesantes de Stylus es que puede usarlo para pruebe que su código sea portátil en una variedad de procesadores diferentes). Luego puede hacer clic en Setting . . . para seleccionar entre una gama de opciones específicas de Saxon (por ejemplo, puede elegir si desea utilizar o no el procesamiento con reconocimiento de esquema). Estos corresponden a opciones que están disponibles en la línea de comandos de Saxon.
+
+![image](https://user-images.githubusercontent.com/23094588/114043303-76bbf080-9886-11eb-99ba-64bbdea31310.png)
+
+**Cómo funciona**
+
+Si ha tenido éxito al ejecutar este ejemplo, o incluso si solo quiere seguir leyendo el libro, querrá saber cómo funciona. Vamos a diseccionarlo.
+
+```xml
+<?xml version="1.0" encoding="iso-8859-1"?>
+```
+
+Este es solo el encabezado XML estándar. El punto interesante es que una hoja de estilo XSLT es en sí misma un documento XML. Tendré más que decir sobre esto más adelante en el capítulo. He usado la codificación de caracteres `iso-8859-1` (que es el nombre oficial del juego de caracteres que Microsoft a veces llama "ANSI") porque en Europa Occidental y Norteamérica es el juego de caracteres que la mayoría de los editores de texto admiten. Si tiene un editor de texto que admita UTF-8 o alguna otra codificación de caracteres, no dude en usarlo.
+
+```xml
+<xsl:stylesheet
+   version="1.0"
+   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+```
+
+Este es el encabezado estándar XSLT 1.0. En términos XML, es una etiqueta de inicio de elemento e identifica el documento como una hoja de estilo. El atributo `xmlns:xsl` es una declaración de espacio de nombres XML, que indica que el prefijo `xsl` se utilizará para los elementos definidos en la especificación W3C XSLT. XSLT hace un uso extensivo de los espacios de nombres XML, y todos los nombres de elementos definidos en el estándar tienen el prefijo de este espacio de nombres para evitar cualquier conflicto con los nombres utilizados en su documento fuente. El atributo de versión indica que la hoja de estilo está diseñada para funcionar con un procesador XSLT 1.0.
+
+Vamonos.
+
+```xml
+<xsl:template match="/">
+```
+
+Un elemento `<xsl:template>` define una regla de plantilla que se activará cuando se procese una parte particular del documento de origen. El atributo `«match = "/"»` indica que esta regla en particular se activa justo al comienzo del procesamiento del documento fuente. Aquí `«/»` es un patrón que identifica el nodo de documento del documento: un documento XML tiene una estructura jerárquica, y de la misma manera que Unix usa el nombre de archivo especial `«/»` para indicar la raíz de un store de archivos jerárquico, XPath usa `«/»` para representar la raíz de la jerarquía de contenido XML.
+
+```html
+<html>
+<head>
+   <title>Today's greeting</title>
+</head>
+<body>
+   <p><xsl:value-of select="greeting"/></p>
+</body>
+</html>
+```
+
+Una vez que se activa esta regla, el cuerpo de la plantilla dice qué salida generar. La mayor parte del cuerpo de la plantilla aquí es una secuencia de elementos HTML y texto que se copiarán en el archivo de salida. Hay una excepción: un elemento `<xsl:value-of>`, que reconocemos como una instrucción XSLT porque usa el namespace prefix `xsl`. Esta instrucción en particular copia el contenido textual de un nodo en el documento fuente al documento de salida. El atributo `select` del elemento especifica el nodo para el que se debe evaluar el valor. La expresión XPath `«greeting»` significa "buscar el conjunto de todos los elementos `<greeting>` que son hijos del nodo que esta regla de plantilla está procesando actualmente". En este caso, esto significa que el elemento `<greeting>` es el elemento más externo del documento fuente. La instrucción `<xsl:value-of>` luego extrae el texto de este elemento y lo copia en la salida en el lugar relevante, en otras palabras, dentro del elemento `<p>` generado.
+
+Todo lo que queda es terminar lo que comenzamos.
+
+```xml
+</xsl:template>
+
+</xsl:stylesheet>
+```
+
+¿Por qué querría colocar el saludo de hoy en un archivo XML separado y mostrarlo usando una hoja de estilo? Una razón es que es posible que desee mostrar el saludo de diferentes formas, según el contexto; por ejemplo, podría mostrarse de manera diferente en un dispositivo diferente, o el saludo podría depender de la hora del día. En este caso, podría escribir una hoja de estilo diferente para transformar el mismo documento fuente de una manera diferente. Esto plantea la cuestión de cómo se selecciona una hoja de estilo en tiempo de ejecución. No hay una respuesta única a esta pregunta; depende del producto que esté utilizando.
+
+Con Saxon, usamos la opción `-a` para procesar el documento XML usando la hoja de estilo especificada en su instrucción de procesamiento `<?xml-stylesheet?>`. En cambio, simplemente podríamos haber especificado la hoja de estilo en la línea de comando:
+
+```sh
+java -jar c:\saxon\saxon8.jar -s:hello.xml -xsl:hello.xsl -o:hello.html
+```
+
+Habiendo examinado una hoja de estilo XSLT 1.0 muy simple, veamos ahora una hoja de estilo que usa características que son nuevas en XSLT 2.0.
+
+### 1.2.4. Una Hoja de estilo XSLT 2.0
 ## 1.3. El lugar de XSLT en la familia XML
 ### 1.3.1. Objetos de formato XSLT y XSL
 ### 1.3.2. XSLT y XPath
