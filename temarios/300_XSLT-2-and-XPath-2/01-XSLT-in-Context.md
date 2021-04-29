@@ -189,7 +189,7 @@ Mientras tanto, puede utilizar Altova o Saxon, y esos son los vehículos princip
 
 Ahora estamos listos para echar un vistazo a un ejemplo del uso de XSLT para transformar un documento XML muy simple.
 
-### 💻 "Hello, world!" XSLT Stylesheet
+### 🔴 💻 "Hello, world!" XSLT Stylesheet
 
 Kernighan y Ritchie en su clásico *El lenguaje de programación C* (Prentice-Hall, 1988) originaron la idea de presentar un programa trivial pero completo justo al comienzo del libro, y desde entonces el programa `Hello world` ha sido una tradición honrada. Por supuesto, no es posible una descripción completa de cómo funciona este ejemplo hasta que se hayan definido todos los conceptos, por lo que si cree que no lo estoy explicando completamente, no se preocupe, las explicaciones vendrán más adelante.
 
@@ -406,7 +406,7 @@ Habiendo examinado una hoja de estilo XSLT 1.0 muy simple, veamos ahora una hoja
 
 Esta hoja de estilo es muy corta, pero se las arregla para utilizar cuatro o cinco nuevas funciones XSLT 2.0 y XPath 2.0 en el espacio de unas pocas líneas. Lo escribí en respuesta a una consulta de usuario planteada en la lista xsl en http://www.mulberrytech.com/ (un lugar excelente para conocer a otros desarrolladores XSLT con niveles de experiencia muy variados); por lo que es un problema real, no una invención. La solución XSLT 1.0 a este problema es de aproximadamente 60 líneas de código.
 
-### 💻 Ejemplo: Tabulación Frecuencias de Palabras
+### 🔴 💻 Ejemplo: Tabulación Frecuencias de Palabras
 
 El problema se plantea simplemente: dado cualquier documento XML, producir una lista de las palabras que aparecen en su texto, dando el número de veces que aparece cada palabra, junto con su frecuencia.
 
@@ -502,17 +502,246 @@ Aquí, el elemento `<xsl:value-of>` es una instrucción definida en el estándar
 
 Después de su publicación, la especificación XPath adquirió cada vez más vida propia, separada de XSLT. Varias implementaciones de DOM (incluida la de Microsoft) le permitieron seleccionar nodos dentro de una estructura de árbol DOM, utilizando un método como `selectNodes(XPath)`, y esta característica ahora está incluida en la versión actual del estándar, DOM3. Los subconjuntos de XPath se utilizan dentro del lenguaje de esquema XML y en XForms para definir las condiciones de validación, y los enlaces de XPath a otros lenguajes como Perl se están multiplicando. Quizás lo más importante de todo es que los diseñadores de XQuery decidieron hacer de su lenguaje un superconjunto puro de XPath. El lenguaje también ha resultado interesante para los académicos, y se han publicado varios artículos analizando su semántica, lo que proporciona la base para implementaciones optimizadas.
 
-### 1.3.3. Espacios de nombres XSLT y XML
+### 1.3.3. Namespaces XSLT y XML
+
+XSLT está diseñado sobre la base de que los ***XML namespaces*** son una parte esencial del estándar XML. Entonces, cuando el estándar XSLT se refiere a un documento XML, siempre significa un documento XML que cumple con la especificación de espacios de nombres XML, que se puede encontrar en http://www.w3.org/TR/REC-xml-names.
+
+Los Namespaces juegan un papel importante en XSLT. Su propósito es permitirle mezclar etiquetas de dos vocabularios diferentes en el mismo documento XML. Ya hemos visto cómo una hoja de estilo puede mezclar elementos del vocabulario de destino (por ejemplo, HTML o XSL-FO) con elementos que actúan como instrucciones XSLT. Aquí hay un recordatorio rápido de cómo funcionan los Namespaces:
+
+* Los Namespaces se identifican mediante un identificador uniforme de recursos (URI). Esto puede tomar varias formas. Una forma es la URL familiar, por ejemplo, http://www.wrox.com/namespace. Otra forma, no completamente estandarizada pero que se usa en algunos vocabularios XML, es una URN, por ejemplo, urn:biztalk-org:biztalk:biztalk_1. La forma detallada de la URI no importa, pero es una buena idea elegir una que sea única. Una buena forma de lograrlo es utilizar el nombre de dominio de su propio sitio web. Pero no dejes que esto te confunda y te haga pensar que debe haber algo en el sitio web para que apunte el URI. El URI del espacio de nombres es simplemente una cadena que ha elegido para que sea diferente de los URI del namespace de otras personas; no es necesario que apunte a nada.
+
+* La última versión, XML Namespaces 1.1, le permite utilizar un Identificador de recursos internacional (IRI) en lugar de un URI. La principal diferencia es que permite caracteres de cualquier alfabeto (por ejemplo, chino); ya no se limita a ASCII. En la práctica, la mayoría de los analizadores XML siempre le han permitido utilizar cualquier carácter que desee en un URI de namespaces.
+
+* Dado que los URI del namespace suelen ser bastante largos y utilizan caracteres especiales como `«/»`, no se utilizan en su totalidad como parte de los nombres de los elementos y atributos. En su lugar, a cada namespace utilizado en un documento se le puede asignar un apodo corto, y este apodo se utiliza como prefijo de los nombres de los elementos y atributos. No importa qué prefijo elija, porque el nombre real del elemento o atributo está determinado solo por su URI de espacio de nombres y su nombre local (la parte del nombre después del prefijo). Por ejemplo, todos mis ejemplos usan el prefijo `xsl` para referirse al URI del espacio de nombres http://www.w3.org/1999/XSL/Transform, pero también podría usar el prefijo `xslt`, siempre que lo use de manera consistente.
+
+* Para los nombres de elementos, también puede declarar un URI de espacio de nombres predeterminado, que se asociará con nombres de elementos sin prefijo. Sin embargo, el URI del espacio de nombres predeterminado no se aplica a los nombres de atributo sin prefijo.
+
+Un prefijo de namespace se declara usando un pseudo-atributo especial dentro de cualquier etiqueta de inicio de elemento, con la forma:
+
+```xml
+xmlns:prefix = "namespace-URI"
+```
+
+Esto declara un prefijo de namespace, que se puede usar para el nombre de ese elemento, para sus atributos y para cualquier elemento o nombre de atributo contenido en ese elemento. El namespace predeterminado, que se usa para elementos que no tienen prefijo (pero no para atributos), se declara de manera similar usando un pseudo-atributo:
+
+```xml
+xmlns = "namespace-URI"
+```
+
+XML Namespaces 1.1 se convirtió en una recomendación el 4 de febrero de 2004, y la especificación XSLT 2.0 prevé que los procesadores XSLT funcionen con esta versión, aunque no es obligatorio. Aparte del cambio en gran parte cosmético de URI a IRIs mencionado anteriormente, la principal innovación es la capacidad de anular la declaración de un namespace, utilizando la sintaxis de la forma `«xmlns:prefix=""»`. Esto está especialmente diseñado para aplicaciones como la mensajería SOAP, donde un documento de carga útil XML se envuelve en un sobre XML para su transmisión. Sin las declaraciones de namespace, existe una tendencia a que los namespaces utilizados en el sobre SOAP se adhieran al XML de carga útil cuando se quita del sobre(envelope), lo que puede causar problemas; por ejemplo, puede invalidar una firma digital adjunta al documento.
+
 ### 1.3.4. XSLT y CSS
-### 1.3.5. Esquemas XSLT y XML
+
+¿Por qué hay dos lenguajes de hojas de estilo, XSL (es decir, XSLT plus XSL Formatting Objects) y hojas de estilo en cascada (CSS y CSS2)?
+
+Es justo decir que en un mundo ideal habría un solo lenguaje en este rol, y que la razón por la que hay dos es que nadie fue capaz de inventar algo que lograra la simplicidad y economía de CSS para hacer cosas simples, combinadas con el poder de XSL para hacer cosas más complejas.
+
+CSS se utiliza principalmente para renderizar HTML, pero también se puede utilizar para renderizar XML directamente, definiendo las características de visualización de cada elemento XML. Sin embargo, tiene serias limitaciones. No puede reordenar los elementos en el documento de origen, no puede agregar texto o imágenes, no puede decidir qué elementos deben mostrarse y cuáles omitirse, tampoco puede calcular totales o promedios o números de secuencia. En otras palabras, solo se puede utilizar cuando la estructura del documento de origen ya está muy cerca de la forma de visualización final.
+
+Dicho esto, CSS es simple de escribir y es muy económico en recursos de máquina. No reordena el documento, por lo que no necesita crear una representación de árbol del documento en la memoria, y puede comenzar a mostrar el documento tan pronto como se reciba el primer texto a través de la red. Quizás, lo más importante de todo, CSS es muy simple de escribir para los autores de HTML, sin conocimientos de programación. En comparación, XSLT es mucho más potente, pero también consume mucha más memoria y potencia del procesador, además de presupuesto de formación.
+
+A menudo es apropiado usar ambas herramientas juntas. Use XSLT para crear una representación del documento que esté cerca de su forma final, en el sentido de que contiene el texto correcto en el orden correcto, y luego use CSS para agregar los toques finales, seleccionando tamaños de fuente, colores, etc. Normalmente, haría el procesamiento XSLT en el servidor y el procesamiento CSS en el cliente (en el navegador); por lo tanto, otra ventaja de este enfoque es que reduce la cantidad de datos enviados por la línea, lo que debería mejorar el tiempo de respuesta para sus usuarios y posponer el próximo aumento costoso del ancho de banda.
+
+### 1.3.5. Schemas XSLT y XML
+
+Uno de los mayores cambios en XSLT 2.0, y uno de los más controvertidos, es la integración de XSLT con el lenguaje de esquema XML. XML Schema proporciona un reemplazo para DTD como una forma de especificar las restricciones estructurales que se aplican a una clase de documentos; a diferencia de las DTD, un esquema XML puede regular el contenido del texto, así como el anidamiento de los elementos y atributos. Muchos de los vocabularios de la industria que se utilizan para definir los estándares de intercambio XML se especifican mediante definiciones de esquemas XML. Por ejemplo, varios de los vocabularios XML para describir música, a los que aludí anteriormente en este capítulo, tienen un esquema XML para definir sus reglas, y este esquema puede usarse para verificar la conformidad de documentos individuales con el estándar en cuestión.
+
+Cuando escribe una hoja de estilo, debe hacer suposiciones sobre la estructura de los documentos de entrada que está diseñada para procesar y la estructura de los documentos de resultado para la que está diseñada. Con XSLT 1.0, estos supuestos estaban implícitos; no había una forma formal de establecer los supuestos en la propia hoja de estilo. Como resultado, si intenta aplicar una hoja de estilo al tipo incorrecto de documento de entrada, el resultado generalmente será basura.
+
+La idea de vincular XSLT y XML Schema fue impulsada por dos consideraciones principales:
+
+* En principio, debería haber beneficios de ingeniería de software si un programa (y una hoja de estilo es de hecho un programa) hace afirmaciones explícitas sobre sus entradas y salidas esperadas. Estas afirmaciones pueden conducir a una detección de errores mejor y más rápida, lo que a menudo permite informar errores en el momento de la compilación que, de lo contrario, solo se informarían la primera vez que se aplicó la hoja de estilo a algunos datos de prueba que ejercieron una parte particular del código.
+
+* Cuanta más información esté disponible para un procesador XSLT en tiempo de compilación, más potencial tiene para generar código óptimo, dando una ejecución más rápida y un mejor uso de la memoria.
+
+Entonces, ¿por qué la controversia? Esto se debe principalmente a que el esquema XML en sí mismo es menos que universalmente popular. Es una especificación extremadamente compleja que es muy difícil de leer, y cuando descubres lo que dice, parece estar llena de reglas que parecen artificiales e inconsistentes. Al mismo tiempo, se las arregla para ser especificado en un lenguaje muy formal y, sin embargo, tiene un número preocupantemente alto de errores que se han corregido a través de erratas publicadas. Aunque hay buenos libros que presentan el esquema XML de una manera más legible, lo logran pasando por alto las complicaciones, lo que significa que los mensajes de error que recibe cuando hace algo mal pueden ser extremadamente oscuros. Como resultado, ha habido una cantidad significativa de soporte para un lenguaje de esquema alternativo, Relax NG, que fue co-desarrollado por el diseñador de XSLT y XPath, James Clark, y es ampliamente considerado como un enfoque mucho más elegante. .
+
+Los grupos de trabajo XSL y XQuery respondieron a estas inquietudes asegurándose de que el soporte para el esquema XML fuera opcional, tanto para los implementadores como para los usuarios. Esto ha silenciado en gran medida las objeciones.
+
+Las señales son que XML Schema llegó para quedarse, le guste o no a la gente. Cuenta con el respaldo de los principales proveedores de software, como IBM, Oracle y Microsoft, y ha sido adoptado por la mayoría de las organizaciones e industrias de usuarios más importantes. Y como tantas cosas que el mundo de las tecnologías de la información ha adoptado como estándares, puede que sea imperfecto, pero en realidad funciona. Mientras tanto, para simplificar la situación de manera bastante cruel, Relax NG está asumiendo el papel de Apple Mac: la elección de los entendidos que juzgan un diseño por su calidad intrínseca en lugar de por un análisis de costo-beneficio a sangre fría.
+
+Como ya he mencionado, el W3C no es una organización a la que le guste dejar florecer mil flores. No se trata de una organización general flexible en la que cada grupo de trabajo es libre de hacer lo suyo. Existen procesos sólidos que garantizan que los grupos de trabajo cooperen y se esfuercen por reconciliar sus diferencias. Por lo tanto, existe la determinación de hacer que todas las especificaciones funcionen correctamente juntas, y el mensaje era que si XML Schema tenía sus problemas, la gente debería trabajar en conjunto para solucionarlos. XSLT y XML Schema provienen del mismo establo, por lo que se esperaba que trabajaran juntos. Y ahora que las especificaciones están terminadas y los productos están disponibles, creo que los usuarios están comenzando a descubrir que pueden trabajar juntos de manera beneficiosa.
+
+El Capítulo 4 proporciona una descripción general de cómo se integran las hojas de estilo y los esquemas en XSLT 2.0, y el Capítulo 19 proporciona un ejemplo práctico de una aplicación que utiliza esta capacidad. Cuando desarrollé por primera vez esta aplicación para el libro (lo que hice al mismo tiempo que desarrollaba el soporte subyacente en Saxon), me sorprendió gratamente ver que realmente estaba obteniendo beneficios de la integración. En el nivel más simple, me gustó mucho la retroalimentación inmediata que recibe cuando una hoja de estilo genera una salida que no se ajusta al esquema del documento de resultado, con mensajes de error que apuntan directamente a la línea ofensiva en la hoja de estilo. Esta makes para un ciclo de depuración mucho más rápido que el antiguo enfoque de poner el archivo de salida terminado a través de un validador de esquema como una operación completamente separada.
+
 ### 1.3.6. XSLT y XQuery
+
+XQuery es una especificación separada de W3C, diseñada para permitir la consulta de datos en documentos XML. Puede operar en documentos individuales o en colecciones que contienen millones de documentos almacenados en una base de datos XML.
+
+Funcionalmente, XQuery ofrece un subconjunto de las capacidades de XSLT. Puede considerarlo como XSLT sin las reglas de la plantilla y sin algunas de las características adicionales, como la capacidad de agrupar, dar formato a fechas y horas, o importar módulos y anularlos selectivamente. Sin embargo, sería un error pensar que al ser un lenguaje más pequeño, XQuery es un pariente pobre. La relativa simplicidad de XQuery hace que sea más difícil escribir aplicaciones grandes y complejas, pero trae dos ventajas significativas: el lenguaje es más fácil de aprender, especialmente para aquellos que provienen de SQL, y es más fácil de optimizar, especialmente cuando que se ejecuta en gigabytes de datos precargados y preindexados en una base de datos XML.
+
+XQuery tiene XPath 2.0 como subconjunto. Esto lo convierte en un miembro de la misma familia que XSLT. Los dos idiomas tienen mucho en común, lo más importante es su sistema de tipos. No hay instalaciones formales en las especificaciones del W3C que permitan que XSLT y XQuery se mezclen en una sola aplicación, pero debido a que los modelos de procesamiento están tan estrechamente alineados, muchas implementaciones permiten llamar a un idioma desde el otro. De hecho, Saxon implementa ambos lenguajes como sintaxis de superficie diferentes para el mismo motor de procesamiento subyacente.
+
+Hay algunas aplicaciones para las que XSLT es definitivamente más adecuado, en particular la publicación de documentos. Hay otros en los que XQuery es la única opción sensata, en particular, la búsqueda de datos en grandes bases de datos XML. Existe una tercera clase de aplicaciones, especialmente la conversión de mensajes, en las que cualquiera de los dos idiomas hará el trabajo y donde la elección depende en gran medida de las preferencias personales. Mi consejo sería usar XQuery si es una aplicación muy pequeña y XSLT si es más grande, en gran parte porque, en mi experiencia, es más fácil escribir código XSLT que se adapte al cambio y se pueda reutilizar en diferentes aplicaciones.
+
 ## 1.4. La historia de XSL
+
+Como la mayoría de los estándares de la familia XML, XSLT fue desarrollado por el World Wide Web Consortium (W3C), una coalición de empresas orquestada por Tim Berners-Lee, el inventor de la Web. Hay una página interesante sobre la historia de XSL y propuestas de estilo en general, en http://www.w3.org/Style/History/.
+
+Escribir historia es un asunto complicado. Sharon Adler, presidenta del Grupo de Trabajo XSL, me dice que sus recuerdos de eventos son muy diferentes de la forma en que los describo. Esto solo demuestra que el registro documental es una instantánea muy cruda de lo que la gente realmente estaba pensando y hablando. Desafortunadamente, sin embargo, es todo lo que tenemos.
+
 ### 1.4.1. Prehistoria
+
+HTML fue concebido originalmente por Berners-Lee (www.w3.org/MarkUp/draft-ietf-iiir-html-01.txt) como un conjunto de etiquetas para marcar la estructura lógica de un documento; títulos, párrafos, enlaces, citas, secciones de código y similares. Pronto, la gente quería tener más control sobre el aspecto del documento; querían lograr el mismo control sobre la apariencia de la publicación entregada que tenían con la impresión y el papel. Entonces, HTML adquirió cada vez más etiquetas y atributos para controlar la presentación; fuentes, márgenes, tablas, colores y todo lo demás que siguió. A medida que evolucionó, los documentos que se publicaban se volvieron cada vez más dependientes del navegador, y se vio que los objetivos originales de simplicidad y universalidad comenzaban a desvanecerse.
+
+El remedio fue ampliamente visto como una separación entre el contenido y la presentación. Este no era un concepto nuevo; se había desarrollado bien durante la década de 1980s en el desarrollo del ***Standard Generalized Markup Language (SGML)***.
+
+Así como XML se derivó como un subconjunto muy simplificado de SGML, XSLT tiene sus orígenes en un estándar basado en SGML llamado ***DSSSL (Document Style Semantics and Specification Language)***. DSSSL (pronunciado *Dissel*) se desarrolló principalmente para satisfacer la necesidad de un lenguaje estándar independiente del dispositivo para definir la reproducción de salida de documentos SGML, particularmente para presentaciones tipográficas de alta calidad. SGML existió durante mucho tiempo antes de que apareciera DSSSL a principios de la década de 1990, pero hasta entonces el lado de la producción se había manejado utilizando herramientas patentadas y, a menudo, extremadamente caras, orientadas a impulsar fotocomponedoras igualmente caras, de modo que la tecnología realmente fue adoptada solo por los grandes editoriales.
+
+Michael Sperberg-McQueen y Robert F. Goldstein presentaron un artículo influyente en la conferencia WWW '94 en Chicago bajo el título *A Manifesto for Adding SGML Intelligence to the World-Wide Web*. Puede encontrarlo en http://tigger.uic.edu/~cmsmcq/htmlmax.html.
+
+Los autores presentaron un conjunto de requisitos para un lenguaje de hoja de estilo, que es una declaración tan buena como cualquiera de los objetivos que los diseñadores de XSL estaban tratando de cumplir. Al igual que con otras propuestas de esa época, el concepto de un lenguaje de transformación separado aún no había aparecido, y una gran parte del artículo está dedicado a las capacidades de interpretación del lenguaje. Sin embargo, existen muchas ideas formativas, incluido el concepto de procesamiento alternativo para hacer frente a situaciones en las que las características particulares no están disponibles en el entorno actual.
+
+Vale la pena citar aquí algunos extractos del artículo:
+
+Idealmente, el lenguaje de la hoja de estilo debería ser declarativo, no procedimental, y debería permitir que las hojas de estilo exploten al máximo la estructura de los documentos SGML. Los estilos deben poder variar con la ubicación estructural del elemento: los párrafos dentro de las notas pueden tener un formato diferente al de los párrafos del texto principal. Los estilos deben poder variar con los valores de atributo del elemento en cuestión: una cita de tipo "display" puede necesitar un formato diferente de una cita de tipo "inline". . .
+
+Al mismo tiempo, el lenguaje tiene que ser razonablemente fácil de interpretar de manera procedimental: implementar el lenguaje de la hoja de estilo no debe convertirse en el mayor desafío en la implementación de un cliente web.
+
+La semántica debe ser aditiva: los usuarios deben poder crear nuevas hojas de estilo agregando nuevas especificaciones a alguna hoja de estilo existente (posiblemente estándar). Esto no debería requerir copiar toda la hoja de estilo base; en su lugar, el usuario debe poder almacenar localmente solo los cambios del usuario en la hoja de estilo estándar, y deben agregarse en el momento de la exploración. Esto es particularmente importante para admitir modificaciones locales de DTD estándar.
+
+Sintácticamente, el lenguaje de la hoja de estilo debe ser muy simple, preferiblemente trivial de analizar. Una posibilidad obvia: formular el lenguaje de la hoja de estilo como un DTD SGML, de modo que cada hoja de estilo sea un documento SGML. Dado que el navegador ya sabe cómo analizar SGML, no se necesitará ningún esfuerzo adicional.
+
+Recomendamos encarecidamente que se utilice un subconjunto de DSSSL para formular hojas de estilo para su uso en la World Wide Web; Con la finalización del trabajo de estándares en DSSSL, no hay razón para que ninguna comunidad invente su propio lenguaje de hoja de estilo desde cero. El estándar DSSSL completo puede ser demasiado exigente para implementarlo en su totalidad, pero incluso si eso resulta cierto, solo proporciona un argumento para definir un subconjunto de DSSSL que debe ser compatible, no un argumento para desarrollar el nuestro. A diferencia de las especificaciones de elaboración casera, un subconjunto de un estándar viene con una ruta de crecimiento predefinida automáticamente. Esperamos trabajar en la formulación de un subconjunto utilizable e implementable de DSSSL para su uso en hojas de estilo WWW e invitamos a todas las partes interesadas a unirse al esfuerzo.
+
+A finales de 1995, se llevó a cabo en París un taller patrocinado por el W3C sobre lenguajes de hojas de estilo. En vista del papel posterior de James Clark como editor de la Recomendación XSLT, es interesante leer las notas de su contribución sobre los objetivos de DSSSL,que se puede encontrar en http://www.w3.org/Style/951106_Workshop/report1.html#clark.
+
+Aquí hay algunos párrafos seleccionados de estas notas:
+
+DSSSL contiene un lenguaje de transformación y un lenguaje de formato. Originalmente, la transformación era necesaria para hacer posibles ciertos tipos de estilos (como tablas de contenido). El lenguaje de consulta ahora se encarga de eso, pero el lenguaje de transformación sobrevive porque es útil por derecho propio.
+
+El lenguaje es estrictamente declarativo, lo que se logra mediante la adopción de un subconjunto funcional de Scheme. Los editores de hojas de estilo interactivos deben ser posibles.
+
+Una hoja de estilo DSSSL describe con mucha precisión una función de SGML a un árbol de objetos de flujo. Permite combinar hojas de estilo parciales ("en cascada" como en CSS): alguna regla puede anular otra regla, basada en prioridades implícitas y explícitas, pero no hay combinación entre estilos en conflicto.
+
+James Clark cerró su charla con el comentario:
+
+¡Crear un buen lenguaje de estilo extensible es difícil!
+
+Uno sospecha que el esfuerzo de editar la Recomendación XSLT 1.0 no le hizo cambiar de opinión.
+
 ### 1.4.2. La primera propuesta XSL
-### 1.4.3. sajón
+
+Después de estas primeras discusiones, el W3C estableció una actividad formal para crear una propuesta de lenguaje de hoja de estilo. El mandato de este grupo especificó que debería basarse en DSSSL.
+
+Como resultado de esta actividad surgió la primera propuesta formal para XSL, con fecha del 27 de agosto de 1997. Titulada ***A Proposal for XSL***, enumera 11 autores: James Clark (que trabaja para él mismo), cinco de Microsoft, tres de Imso Corporation, uno de ArborText, y uno (Henry Thompson) de la Universidad de Edimburgo. El documento se puede encontrar en http://www.w3.org/TR/NOTE-XSL.html.
+
+Vale la pena leer la sección que describe el propósito del lenguaje.
+
+XSL es un lenguaje de hoja de estilo diseñado para la comunidad web. Proporciona funcionalidad más allá de CSS (por ejemplo, reordenación de elementos). Esperamos que CSS se utilice para mostrar documentos XML estructurados de forma sencilla y XSL cuando se requieran capacidades de formato más potentes o para formatear información altamente estructurada, como datos estructurados XML o documentos XML que contienen datos estructurados.
+
+Los autores web crean contenido en tres niveles diferentes de sofisticación, según se indica a continuación:
+
+* markup: se basa únicamente en una sintaxis declarativa
+
+* script: además, utiliza "fragmentos" de código para comportamientos más complejos
+
+* program: utiliza un lenguaje de programación completo
+
+XSL está destinado a ser accesible para el usuario de nivel de "marcado" al proporcionar una solución declarativa para la mayoría de los requisitos de descripción y representación de datos. Las tareas menos comunes se adaptan a través de un elegante escape a un entorno de secuencias de comandos familiar. Este enfoque es familiar para la comunidad de publicación web, ya que se basa en el entorno HTML/JavaScript.
+
+Las poderosas capacidades proporcionadas por XSL permiten:
+
+* formato de los elementos de origen en función de la ascendencia / descendencia, la posición y la unicidad
+* la creación de construcciones de formato que incluyen texto y gráficos generados
+* la definición de macros de formato reutilizables
+* hojas de estilo independientes de la dirección de escritura
+* conjunto extensible de objetos de formato
+
+Luego, los autores explicaron cuidadosamente por qué habían considerado necesario divergir de DSSSL y describieron por qué se creía necesario un lenguaje separado de CSS (Cascading Style Sheets).
+
+Luego establecieron algunos principios de diseño:
+
+* XSL debería poder utilizarse directamente a través de Internet.
+
+* XSL debe expresarse en sintaxis XML.
+
+* XSL debe proporcionar un lenguaje declarativo para realizar todas las tareas de formato comunes.
+
+* XSL debería proporcionar un "escape" a un lenguaje de secuencias de comandos para dar cabida a tareas de formato más sofisticadas y permitir la extensibilidad y la completitud.
+
+* XSL será un subconjunto de DSSSL con la enmienda propuesta. (*Como XSL ya no era un subconjunto de DSSSL, astutamente propusieron enmendar DSSSL para que se convirtiera en un superconjunto de XSL*).
+
+* Debería ser posible un mapeo mecánico de una hoja de estilo CSS en una hoja de estilo XSL.
+
+* XSL debe estar informado por la experiencia del usuario con el lenguaje de la hoja de estilo FOSI.
+
+* El número de funciones opcionales en XSL debe mantenerse al mínimo.
+
+* Las hojas de estilo XSL deben ser legibles y razonablemente claras.
+
+* El diseño XSL debe prepararse rápidamente.
+
+* Las hojas de estilo XSL serán fáciles de crear.
+
+* La concisión en el marcado XSL es de mínima importancia.
+
+Como declaración de requisitos, esto no se encuentra entre los mejores. No se lee como el tipo de lista que obtiene cuando habla con los usuarios y averigua lo que necesitan. Es mucho más el tipo de lista que los diseñadores escriben cuando saben lo que quieren producir, incluidas algunas concesiones políticas a las personas que podrían presentar objeciones. Pero si quiere entender por qué XSLT se convirtió en el lenguaje que lo hizo, esta lista es sin duda una prueba del pensamiento.
+
+El lenguaje descrito en esta primera propuesta contiene muchos de los conceptos clave de XSLT cuando finalmente surgió, pero la sintaxis es prácticamente irreconocible. Ya estaba claro que el lenguaje debería basarse en plantillas que manejaran nodos en el documento de origen que coincidieran con un patrón definido, y que el lenguaje debería estar libre de efectos secundarios, para permitir "la representación y el manejo progresivos de documentos grandes". Exploraré la importancia de este requisito con más detalle en la página 34 y discutiré sus implicaciones en la forma en que se diseñan las hojas de estilo en el Capítulo 17. La idea básica es que si una hoja de estilo se expresa como una colección de operaciones completamente independientes, cada una de las que no tiene ningún efecto externo más que generar parte de la salida a partir de su entrada (por ejemplo, no puede actualizar las variables globales), entonces es posible generar cualquier parte de la salida de forma independiente si esa parte particular de la entrada cambia. Si el lenguaje XSLT realmente logra este objetivo sigue siendo una pregunta abierta.
+
+El primer Borrador de Trabajo de XSL (que no debe confundirse con la Propuesta) se publicó el 18 de agosto de 1998, y el lenguaje comenzó a tomar forma, convergiendo gradualmente hacia la forma final que tomó en la Recomendación del 16 de noviembre de 1999 a través de una serie de Borradores de trabajo, cada uno de los cuales hizo cambios radicales, pero mantuvo intactos los principios de diseño originales.
+
+> **NOTA**
+>
+> Una recomendación es el documento más definitivo producido por el W3C. Técnicamente, no es un estándar, porque los estándares solo pueden ser publicados por organizaciones de estándares aprobadas por el gobierno. Pero a menudo me referiré a él de manera vaga como "el estándar" en este libro.
+
+### 1.4.3. Sajón
+
+En este punto, podría ser una buena idea aclarar cómo me involucré en la historia. En 1998 trabajaba para el fabricante británico de ordenadores ICL, que forma parte de Fujitsu. Fujitsu, en Japón, había desarrollado un sistema de base de datos de objetos, que luego se comercializó como Jasmine, y yo estaba usando esta tecnología para crear aplicaciones de administración de contenido para grandes editoriales. Desarrollamos algunas aplicaciones grandes exitosas, pero descubrimos que era demasiado complejo para las personas que querían algo en seis semanas en lugar de seis meses. Así que me pidieron que mirara qué podíamos hacer con XML, que estaba apareciendo en el horizonte.
+
+Llegué a la conclusión de que XML parecía algo bueno, pero que no había ningún software. Así que desarrollé las primeras versiones de Saxon para proporcionar una demostración de prueba de concepto. En esa etapa, Saxon era solo una biblioteca Java, no un procesador XSLT, pero a medida que se desarrollaban los estándares XSL, descubrí que mis propias ideas convergían cada vez más con lo que estaba haciendo el grupo de trabajo del W3C, y comencé a implementar el lenguaje tal como estaba. siendo especificado. ICL había decidido que sus recursos de marketing se distribuían en demasiados productos, por lo que la dirección tomó la imaginativa decisión de hacer que la tecnología estuviera disponible como código abierto. Diecisiete días después de que se publicara la especificación XSLT 1.0 en noviembre de 1999, anuncié la primera implementación conforme. Y el día que se publicó, comencé a trabajar en la primera edición de este libro.
+
+Cuando se publicó el libro, el grupo de trabajo XSL me invitó a unirme y participar en el desarrollo de XSLT 1.1. Inicialmente, al estar basado en el Reino Unido y con poco tiempo disponible para el trabajo, mi participación fue bastante esporádica. Pero a principios de 2001 cambié de trabajo y me uní a Software AG, que quería que asumiera un papel completo en el trabajo del W3C. Al año siguiente, James Clark se retiró del Grupo de Trabajo y yo me puse en su lugar como editor.
+
+La razón por la que estoy explicando esta secuencia de eventos es que espero que les ayude a comprender el punto de vista desde el que está escrito este libro. Cuando escribí la primera edición, era un extraño y me sentí completamente libre de criticar la especificación cuando lo creyera necesario. He tratado de mantener un enfoque objetivo en la presente edición, pero como editor de la especificación de lenguaje es mucho más difícil ser imparcial. He tratado de mantener el equilibrio: no sería justo usar el libro como plataforma para impulsar mis puntos de vista sobre los de mis colegas del grupo de trabajo, pero al mismo tiempo, no he hecho ningún esfuerzo por ser a la defensiva sobre las decisiones que habría tomado de manera diferente si me las hubieran dejado.
+
+Software AG continuó apoyando mi participación en el trabajo del W3C (en el grupo XQuery y en el grupo XSL), junto con el desarrollo de Saxon y la redacción de este libro, hasta febrero de 2004, momento en el que dejé para establecer mi propia empresa, Saxonica.
+
 ### 1.4.4. Más allá de XSLT 1.0
+
+Después de que se publicó XSLT 1.0, el Grupo de Trabajo XSL responsable del lenguaje decidió dividir los requisitos para las mejoras en dos categorías: XSLT 1.1 estandarizaría una pequeña cantidad de características urgentes que los proveedores ya habían considerado necesarias para agregar a sus productos como extensiones, mientras que XSLT 2.0 manejaría los requisitos más estratégicos que necesitaban más investigación.
+
+Un borrador de trabajo de XSLT 1.1 se publicó el 12 de diciembre de 2000. Describía tres mejoras principales a la especificación XSLT 1.0: la capacidad de producir múltiples documentos de salida, la capacidad de usar árboles temporales para crear una transformación de múltiples pasadas y enlaces estándar a funciones de extensión escritas en Java o ECMAScript.
+
+Por varias razones, XSLT 1.1 nunca pasó de la etapa de borrador de trabajo. Esto se debió en parte a la controversia en torno a los enlaces del lenguaje Java, pero más en particular porque se estaba volviendo más claro que XSLT 2.0 sería una revisión bastante radical del lenguaje, y el Grupo de Trabajo no quería hacer nada en 1.1 que entrara en juego. la forma de lograr las metas 2.0. Hubo sentimientos, por ejemplo, de que la facilidad para los árboles temporales podría perjudicar la capacidad de soportar secuencias en 2.0, un temor que resultó ser en gran parte infundado.
+
 ### 1.4.5. Convergencia con XQuery
+
+Para cuando comenzaba el trabajo en XSLT 2.0, el Grupo de Trabajo XQuery separado en W3C había creado un borrador de su propio lenguaje.
+
+Si bien el Grupo de Trabajo XSL había identificado la necesidad de un lenguaje de transformación para respaldar una parte autónoma del proceso de formateo, XQuery se originó en la necesidad de buscar grandes cantidades de documentos XML almacenados en una base de datos.
+
+El trabajo en un lenguaje de consulta XML había comenzado ya en 1998. Se llevó a cabo un taller en diciembre de 1998, y puede encontrar los 66 documentos de posición presentados en este taller en http://www.w3.org/TandS/QL/QL98/ pp.html. Es interesante ver cómo los participantes vieron la relación con XSL, como se conocía entonces. El documento de posición de Microsoft afirma la creencia de que un lenguaje de consulta podría desarrollarse como una extensión de XSLT, pero en esto está casi solo. Muchos de los participantes tenían experiencia en bases de datos, con ideas firmemente arraigadas en la tradición de SQL y lenguajes de bases de datos de objetos como OQL, y para estas personas, XSL no se parecía ni remotamente a un lenguaje de consulta. Pero a la luz de los eventos posteriores, es interesante leer el documento de posición del Grupo de Trabajo XSL, que dice en su resumen:
+
+1. El lenguaje de consulta debe utilizar patrones XSL como base para la recuperación de información.
+
+2. El lenguaje de consulta debe utilizar plantillas XSL como base para materializar los resultados de la consulta.
+
+3. El lenguaje de consulta debe ser al menos tan expresivo como lo es XSL actualmente.
+
+4. El desarrollo de los lenguajes de patrones y transformación debe permanecer en el Grupo de Trabajo XSL.
+
+5. Un grupo de coordinación debe garantizar que un solo lenguaje de consulta satisfaga todos los requisitos del grupo de trabajo o que todos los lenguajes de consulta del W3C compartan un modelo de consulta subyacente.
+
+(Recuerde que XPath aún no se había identificado como un lenguaje separado y que las expresiones que luego se convirtieron en XPath se conocían como patrones).
+
+Esta oferta de coordinación, y el fuerte deseo de asegurar la coherencia entre las diferentes especificaciones del W3C, puede verse como directamente conducente a la posterior colaboración entre los dos grupos de trabajo para definir XPath 2.0.
+
+El grupo XQuery comenzó a reunirse en septiembre de 1999. El primer documento de requisitos publicado se publicó en enero siguiente (http://www.w3.org/TR/2000/WD-xmlquery-req-20000131). Incluía un compromiso de compatibilidad con XML Schema y una promesa redactada con bastante cautela de "tener en cuenta la expresibilidad y las facilidades de búsqueda de XPath al formular su álgebra y sintaxis de consulta". En julio de 2000 se vio un documento de requisitos revisado que incluía una selección de consultas que el idioma debe poder expresar. El primer borrador visible externamente del lenguaje XQuery se publicó en febrero de 2001 (ver http://www.w3.org/TR/2001/WD-xquery-20010215/), y fue en esta etapa cuando la colaboración entre los dos los grupos de trabajo comenzaron en serio.
+
+La estrecha cooperación entre los equipos que desarrollan los dos lenguajes contrasta extrañamente con la posición un tanto contradictoria adoptada por partes de la comunidad de usuarios. Los usuarios de XSLT se apresuraron a señalar que XSLT 1.0 satisfacía todos los requisitos del primer documento de requisitos de XQuery y podía resolver todos los casos de uso publicados en la segunda versión en agosto de 2000. Al mismo tiempo, los usuarios del lado de la valla de XQuery A menudo han sido desdeñosos con XSLT, quejándose de su sintaxis detallada y, a veces, de su semántica arcana. Incluso hoy en día, cuando las similitudes de los dos lenguajes en un nivel profundo son claramente evidentes, hay poca superposición entre sus comunidades de usuarios: encuentro que la mayoría de los usuarios del motor XQuery en Saxon no tienen experiencia XSLT. La diferencia entre XSLT y XQuery es, en muchos sentidos, una diferencia de estilo más que de sustancia, pero los usuarios a menudo se sienten muy interesados en el estilo.
+
 ### 1.4.6. El desarrollo de XSLT 2.0 y XPath 2.0
+
+Los requisitos para XSLT 2.0 y XPath 2.0 se publicaron el 14 de febrero de 2001. En el caso de los requisitos de XPath 2.0, el documento fue escrito conjuntamente por los dos grupos de trabajo. Puede encontrar los documentos en las siguientes URL:
+
+```sh
+http://www.w3.org/TR/2001/WD-xslt20req-20010214
+
+http://www.w3.org/TR/2001/WD-xpath20req-20010214
+```
+
 ## 1.5. XSLT 2.0 como lenguaje
 ### 1.5.1. Uso de sintaxis XML
 ### 1.5.2. Sin efectos secundarios
