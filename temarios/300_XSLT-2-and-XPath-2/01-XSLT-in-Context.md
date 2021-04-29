@@ -189,7 +189,7 @@ Mientras tanto, puede utilizar Altova o Saxon, y esos son los vehículos princip
 
 Ahora estamos listos para echar un vistazo a un ejemplo del uso de XSLT para transformar un documento XML muy simple.
 
-#### 💻 "Hello, world!" XSLT Stylesheet
+### 💻 "Hello, world!" XSLT Stylesheet
 
 Kernighan y Ritchie en su clásico *El lenguaje de programación C* (Prentice-Hall, 1988) originaron la idea de presentar un programa trivial pero completo justo al comienzo del libro, y desde entonces el programa `Hello world` ha sido una tradición honrada. Por supuesto, no es posible una descripción completa de cómo funciona este ejemplo hasta que se hayan definido todos los conceptos, por lo que si cree que no lo estoy explicando completamente, no se preocupe, las explicaciones vendrán más adelante.
 
@@ -406,7 +406,7 @@ Habiendo examinado una hoja de estilo XSLT 1.0 muy simple, veamos ahora una hoja
 
 Esta hoja de estilo es muy corta, pero se las arregla para utilizar cuatro o cinco nuevas funciones XSLT 2.0 y XPath 2.0 en el espacio de unas pocas líneas. Lo escribí en respuesta a una consulta de usuario planteada en la lista xsl en http://www.mulberrytech.com/ (un lugar excelente para conocer a otros desarrolladores XSLT con niveles de experiencia muy variados); por lo que es un problema real, no una invención. La solución XSLT 1.0 a este problema es de aproximadamente 60 líneas de código.
 
-#### 💻 Ejemplo: Tabulación Frecuencias de Palabras
+### 💻 Ejemplo: Tabulación Frecuencias de Palabras
 
 El problema se plantea simplemente: dado cualquier documento XML, producir una lista de las palabras que aparecen en su texto, dando el número de veces que aparece cada palabra, junto con su frecuencia.
 
@@ -456,6 +456,8 @@ Veamos cómo funciona esto.
 
 ![image](https://user-images.githubusercontent.com/23094588/114051284-3ad85980-988d-11eb-8b4d-acbbe49474f8.png)
 
+![image](https://user-images.githubusercontent.com/23094588/114053179-01085280-988f-11eb-9571-9023907e0ac1.png)
+
 El elemento `<xsl:stylesheet>` introduce el espacio de nombres XSLT, como antes, y nos dice que esta hoja de estilo está diseñada para usarse con un procesador XSLT 2.0.
 
 El elemento `<xsl:output>` solicita que se aplique una sangría a la salida XML de la hoja de estilo, lo que hace que sea mucho más fácil de leer para los humanos.
@@ -474,15 +476,32 @@ La expresión XPath `«for»` ahora aplica la función `lower-case()` a cada una
 
 La hoja de estilo XSLT ahora toma esta secuencia de cadenas y le aplica la instrucción `<xsl:for-each-group>`. Esto procesa el cuerpo de la instrucción `<xsl:for-each-group>` una vez para cada grupo de elementos seleccionados, donde un grupo se identifica como aquellos elementos que tienen un valor común para una clave de agrupación. En este caso, la clave de agrupación se escribe como `«group-by="."»`, Lo que significa que los valores (las palabras) se agrupan según su propio valor. (En otra aplicación, podríamos haber elegido agruparlos por su longitud o por su letra inicial). Entonces, el cuerpo de la instrucción se ejecuta una vez para cada palabra distinta, y la instrucción `<xsl:sort>` nos dice que clasifiquemos los grupos en orden descendente del tamaño de los grupos (es decir, el número de veces que aparece cada palabra). Para cada uno de los grupos, generamos un elemento `<word>` con dos atributos: un atributo es el valor que usamos como clave de agrupación; el otro es el número de elementos del grupo.
 
-#### 💻 Ejemplo: Ejecución Propia
-
-![image](https://user-images.githubusercontent.com/23094588/114053179-01085280-988f-11eb-9571-9023907e0ac1.png)
-
-
-
 ## 1.3. El lugar de XSLT en la familia XML
+
+XSLT es una publicación del World Wide Web Consortium (W3C) y encaja en la familia de estándares XML, la mayoría de los cuales también son desarrollados por W3C. En esta sección intentaré explicar la relación, a veces confusa, de XSLT con otros estándares y especificaciones relacionados.
+
 ### 1.3.1. Objetos de formato XSLT y XSL
+
+XSLT nació como parte de un lenguaje más grande llamado ***XSL (Extensible Stylesheet Language - Lenguaje de hoja de estilo extensible)***. Como su nombre lo indica, XSL fue (y está) destinado a definir el formato y la presentación de documentos XML para su visualización en pantalla, en papel o en la palabra hablada. A medida que avanzaba el desarrollo de XSL, quedó claro que, por lo general, se trataba de un proceso de dos etapas: primero, una transformación estructural, en la que los elementos se seleccionan, agrupan y reordenan; y luego un proceso de formateo en el que los elementos resultantes se renderizan como tinta sobre papel o píxeles en la pantalla. Se reconoció que estas dos etapas eran bastante independientes, por lo que XSL se dividió en dos partes: XSLT para definir transformaciones; y "el resto" - que todavía se llama oficialmente XSL, aunque la mayoría de la gente prefiere llamarlo ***XSL-FO (XSL Formatting Objects)*** - para la etapa de formateo.
+
+XSL-FO no es más que otro vocabulario XML, en el que los objetos descritos son áreas de la página impresa y sus propiedades. Dado que este es solo otro vocabulario XML, XSLT no necesita capacidades especiales para generarlo como su salida. XSL-FO está fuera del alcance de este libro. Es un tema importante. XSL-FO ofrece maravillosas instalaciones para lograr una salida tipográfica de alta calidad de sus documentos. Sin embargo, para muchas personas, traducir documentos a HTML para presentarlos en un navegador estándar es bastante bueno, y eso se puede lograr usando XSLT solo, o si es necesario, usando XSLT junto con hojas de estilo en cascada (CSS o CSS2), que yo volverá en breve.
+
+Es mejor evitar el término XSL, porque se usa con muchos significados diferentes. Es el nombre correcto para los objetos de formato XSL, pero muchas personas lo usan para referirse a XSLT. También se utiliza en documentos de Microsoft más antiguos para referirse a su lenguaje WD-xsl obsoleto, que se emitió como parte de Internet Explorer 4 antes de que XSLT se estandarizara en 1999.
+
 ### 1.3.2. XSLT y XPath
+
+A mitad del desarrollo de XSLT 1.0, se reconoció que había una superposición significativa entre la sintaxis de expresión en XSLT para seleccionar partes de un documento y el lenguaje XPointer que se estaba desarrollando para vincular de un documento a otro. Para evitar tener dos lenguajes de expresión separados pero superpuestos, los dos comités decidieron unir fuerzas y definir un único lenguaje, XPath, que serviría para ambos propósitos. XPath 1.0 se publicó el mismo día que XSLT 1.0, 16 de noviembre de 1999.
+
+XPath actúa como un sublenguaje dentro de una hoja de estilo XSLT. Una expresión XPath puede usarse para cálculos numéricos o manipulaciones de cadenas, o para probar condiciones booleanas, pero su uso más característico (y el que le da su nombre) es identificar partes del documento de entrada a procesar. Por ejemplo, la siguiente instrucción genera el precio promedio de todos los libros en el documento de entrada:
+
+```xsl
+<xsl:value-of select="avg(//book/@price)"/>
+```
+
+Aquí, el elemento `<xsl:value-of>` es una instrucción definida en el estándar XSLT, que hace que se escriba un valor en el documento de salida. El atributo `select` contiene una expresión XPath, que calcula el valor a escribir: específicamente, el valor promedio de los atributos de precio en todos los elementos `<book>`. (La función `avg()` también es nueva en XPath 2.0).
+
+Después de su publicación, la especificación XPath adquirió cada vez más vida propia, separada de XSLT. Varias implementaciones de DOM (incluida la de Microsoft) le permitieron seleccionar nodos dentro de una estructura de árbol DOM, utilizando un método como `selectNodes(XPath)`, y esta característica ahora está incluida en la versión actual del estándar, DOM3. Los subconjuntos de XPath se utilizan dentro del lenguaje de esquema XML y en XForms para definir las condiciones de validación, y los enlaces de XPath a otros lenguajes como Perl se están multiplicando. Quizás lo más importante de todo es que los diseñadores de XQuery decidieron hacer de su lenguaje un superconjunto puro de XPath. El lenguaje también ha resultado interesante para los académicos, y se han publicado varios artículos analizando su semántica, lo que proporciona la base para implementaciones optimizadas.
+
 ### 1.3.3. Espacios de nombres XSLT y XML
 ### 1.3.4. XSLT y CSS
 ### 1.3.5. Esquemas XSLT y XML
