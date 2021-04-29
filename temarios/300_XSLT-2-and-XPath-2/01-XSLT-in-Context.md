@@ -456,6 +456,26 @@ Veamos cómo funciona esto.
 
 ![image](https://user-images.githubusercontent.com/23094588/114051284-3ad85980-988d-11eb-8b4d-acbbe49474f8.png)
 
+El elemento `<xsl:stylesheet>` introduce el espacio de nombres XSLT, como antes, y nos dice que esta hoja de estilo está diseñada para usarse con un procesador XSLT 2.0.
+
+El elemento `<xsl:output>` solicita que se aplique una sangría a la salida XML de la hoja de estilo, lo que hace que sea mucho más fácil de leer para los humanos.
+
+Hay un elemento `<xsl:template>`, como antes, que define el código que se ejecutará cuando se encuentre el nodo de documento del documento fuente. Esto genera un elemento `<wordcount>` en el resultado, y dentro de este pone las frecuencias de palabras.
+
+Para comprender la instrucción `<xsl:for-each-group>`, que es nueva en XSLT 2.0, primero debemos observar su atributo de selección. Esto contiene la expresión XPath 2.0
+
+```xml
+for $w in //text()/tokenize(., '\W+')[.!=''] return lower-case($w)
+```
+
+Esto primero selecciona `«//text()»`, el conjunto de todos los nodos de texto en el árbol de entrada. Luego tokeniza cada uno de estos nodos de texto, es decir, lo divide en una secuencia de subcadenas. La tokenización se realiza aplicando la expresión regular `«\W+»`. Las expresiones regulares son nuevas en XPath 2.0 y XSLT 2.0, aunque resultarán muy familiares para los usuarios de otros lenguajes como Perl. Proporcionan al idioma una capacidad de manejo de texto muy mejorada. Esta expresión en particular, `«\W+»`, coincide con cualquier secuencia de uno o más caracteres "que no son palabras", una categoría conveniente que incluye espacios, signos de puntuación y otros separadores. Entonces, el resultado de llamar a la función `tokenize()` es una secuencia de cadenas que contiene las palabras que aparecen en el texto. Debido a que hay nodos de texto que no contienen nada de interés, el resultado también incluye algunos tokens de longitud cero, y los filtramos aplicando el predicado `«[.! = '']»`
+
+La expresión XPath `«for»` ahora aplica la función `lower-case()` a cada una de las cadenas de esta secuencia, produciendo el equivalente en minúsculas de la palabra. (Casi todo en esta expresión XPath es nuevo en XPath 2.0: la función  `lower-case()`, la función `tokenize()`, la expresión `«for»` y, de hecho, la capacidad de manipular una secuencia de cadenas).
+
+La hoja de estilo XSLT ahora toma esta secuencia de cadenas y le aplica la instrucción `<xsl:for-each-group>`. Esto procesa el cuerpo de la instrucción `<xsl:for-each-group>` una vez para cada grupo de elementos seleccionados, donde un grupo se identifica como aquellos elementos que tienen un valor común para una clave de agrupación. En este caso, la clave de agrupación se escribe como `«group-by="."»`, Lo que significa que los valores (las palabras) se agrupan según su propio valor. (En otra aplicación, podríamos haber elegido agruparlos por su longitud o por su letra inicial). Entonces, el cuerpo de la instrucción se ejecuta una vez para cada palabra distinta, y la instrucción `<xsl:sort>` nos dice que clasifiquemos los grupos en orden descendente del tamaño de los grupos (es decir, el número de veces que aparece cada palabra). Para cada uno de los grupos, generamos un elemento `<word>` con dos atributos: un atributo es el valor que usamos como clave de agrupación; el otro es el número de elementos del grupo.
+
+#### 💻 Ejemplo: Ejecución Propia
+
 ![image](https://user-images.githubusercontent.com/23094588/114053179-01085280-988f-11eb-9571-9023907e0ac1.png)
 
 
