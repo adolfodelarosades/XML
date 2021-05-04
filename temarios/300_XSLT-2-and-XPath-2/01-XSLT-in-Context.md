@@ -742,8 +742,57 @@ http://www.w3.org/TR/2001/WD-xslt20req-20010214
 http://www.w3.org/TR/2001/WD-xpath20req-20010214
 ```
 
+En términos generales, los requisitos se dividen en tres categorías:
+
+* Funciones que obviamente faltan en los estándares actuales y que facilitarían mucho la vida de los usuarios, por ejemplo, facilidades para agrupar nodos relacionados, funciones numéricas y de manejo de cadenas adicionales, y la capacidad de leer archivos de texto y documentos XML.
+
+* Cambios deseados por el Grupo de trabajo de consultas XML. La dificultad en esta etapa era que el grupo Query no solo quería adiciones al lenguaje XPath; querían cambios fundamentales en su semántica. Muchos miembros del grupo XQuery sintieron que no podían vivir con algunas de las arbitrariedades de la forma en que XPath manejaba los tipos de datos en general, y los conjuntos de nodos en particular, por ejemplo, el hecho de que `«a = 1»` comprueba si hay alguna `«a»` que es igual a uno, mientras que `«a − 1 = 0»` comprueba si la primera `«a»` es igual a uno.
+
+* Funciones diseñadas para explotar e integrarse con XML Schema. La especificación del esquema XML del W3C había llegado a una etapa avanzada (se convirtió en una recomendación candidata el 20 de octubre de 2000) y comenzaban a aparecer implementaciones en los productos. La idea era que si el esquema especificaba que un elemento en particular contiene un número o una fecha (por ejemplo), entonces debería ser posible utilizar este conocimiento al comparar u ordenar fechas dentro de una hoja de estilo.
+
+El desarrollo de XSLT 2.0, que culminó con la Recomendación del 23 de enero de 2007, resultó ser un proceso prolongado. Hubo retrasos tempranos para llegar a un acuerdo con el grupo XQuery sobre los detalles de XPath 2.0. En primer lugar, esto llevó mucho tiempo, debido a la cantidad de personas involucradas; en segundo lugar, debido a los lugares muy diferentes de donde provenían las personas (la comunidad de bases de datos y la comunidad de documentos históricamente han estado completamente aisladas entre sí, y fue necesario hablar mucho antes de que las personas comenzaran a comprender las posiciones de los demás); y finalmente, debido a la enorme dificultad técnica de encontrar un diseño viable que ofreciera el equilibrio adecuado entre compatibilidad con versiones anteriores y una semántica rigurosa y coherente. Más tarde, cuando la especificación parecía estar casi terminada, todavía tomó un par de años aprobar las revisiones públicas exigidas por el proceso W3C, que generó miles de comentarios detallados.
+
+Pero eso es todo historia ahora. Veamos a continuación las características esenciales de XSLT 2.0 como lenguaje.
+
 ## 1.5. XSLT 2.0 como lenguaje
+
+¿Cuáles son las características más significativas de XSLT como idioma, que lo distinguen de otros idiomas? En esta sección elegiré cinco de las características más llamativas: el hecho de que está escrito en sintaxis XML, el hecho de que es un lenguaje libre de efectos secundarios, el hecho de que el procesamiento se describe como un conjunto de reglas de coincidencia de patrones, el hecho de que tiene un sistema de tipos basado en XML Schema, y el hecho de que es un sistema de dos idiomas en el que un idioma (XPath) está incrustado en otro (XSLT).
+
 ### 1.5.1. Uso de sintaxis XML
+
+Como hemos visto, el uso de la sintaxis SGML para hojas de estilo se propuso ya en 1994, y parece que esta idea se convirtió gradualmente en la sabiduría aceptada. Es difícil rastrear exactamente cuáles fueron los argumentos primordiales y cuándo se encuentra escribiendo algo como:
+
+```xml
+<xsl:variable name="y">
+   <xsl:call-template name="f">
+      <xsl:with-param name="x"/>
+   </xsl:call-template>
+</xsl:variable>
+```
+
+para expresar lo que en otros idiomas se escribiría como `«y = f(x);»`, es posible que se pregunte cómo se tomó esa decisión.
+
+Los argumentos más obvios para expresar hojas de estilo XSLT en XML son quizás los siguientes:
+
+* Ya existe un analizador XML en el navegador; por lo que mantiene la huella pequeña si se puede reutilizar.
+
+* Todos estaban hartos de las inconsistencias sintácticas entre HTML / XML y CSS y no querían que volviera a suceder lo mismo.
+
+* La sintaxis similar a Lisp de DSSSL fue ampliamente vista como una barrera para su adopción; por lo que sería mejor tener una sintaxis que ya sea familiar en la comunidad de destino.
+
+* Muchos lenguajes de plantilla populares existentes (incluidas las páginas ASP y JSP simples) se expresan como un esquema del documento de salida con instrucciones integradas; entonces este es un concepto familiar.
+
+* El aparato léxico es reutilizable, por ejemplo, soporte Unicode, referencias de caracteres y entidades, manejo de espacios en blanco, espacios de nombres.
+
+* Las herramientas de desarrollo visual eliminan el inconveniente de escribir muchos corchetes angulares.
+
+* A menudo es útil tener una hoja de estilo como entrada o salida de una transformación; por lo que es una ventaja si una hoja de estilo puede leer y escribir otras hojas de estilo.
+
+En mi experiencia, el argumento más generalizado es el último: es sorprendente la frecuencia con la que las aplicaciones complejas construyen o modifican hojas de estilo sobre la marcha. Pero nos guste o no, la sintaxis basada en XML es ahora una característica intrínseca del lenguaje que tiene ventajas e inconvenientes. Hace que el lenguaje sea detallado, pero al final, el número de pulsaciones de teclas tiene muy poca relación con la facilidad o dificultad de resolver problemas de transformación particulares.
+
+En XSLT 2.0, la amplitud del lenguaje se ha reducido considerablemente al aumentar la expresividad de la parte no XML de la sintaxis, a saber, las expresiones XPath. Muchos cálculos que requerían cinco líneas de código XSLT en 1.0 ahora se pueden expresar en una sola expresión XPath. Dos construcciones en particular llevaron a esta simplificación: la expresión condicional (`if..then..else`) en XPath 2.0; y la capacidad de definir una función en XSLT (usando `<xsl:function>`) que se puede llamar directamente desde una expresión XPath. Para tomar el ejemplo discutido anteriormente, si reemplaza la plantilla «f» por una función escrita por el usuario «f», puede reemplazar las cinco líneas en el ejemplo con:
+
+
 ### 1.5.2. Sin efectos secundarios
 ### 1.5.3. Basado en reglas
 ### 1.5.4. Tipos basados en esquema XML
