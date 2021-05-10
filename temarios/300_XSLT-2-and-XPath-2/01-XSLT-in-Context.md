@@ -686,7 +686,7 @@ El primer Borrador de Trabajo de XSL (que no debe confundirse con la Propuesta) 
 >
 > Una recomendación es el documento más definitivo producido por el W3C. Técnicamente, no es un estándar, porque los estándares solo pueden ser publicados por organizaciones de estándares aprobadas por el gobierno. Pero a menudo me referiré a él de manera vaga como "el estándar" en este libro.
 
-### 1.4.3. Sajón
+### 1.4.3. Saxon
 
 En este punto, podría ser una buena idea aclarar cómo me involucré en la historia. En 1998 trabajaba para el fabricante británico de ordenadores ICL, que forma parte de Fujitsu. Fujitsu, en Japón, había desarrollado un sistema de base de datos de objetos, que luego se comercializó como Jasmine, y yo estaba usando esta tecnología para crear aplicaciones de administración de contenido para grandes editoriales. Desarrollamos algunas aplicaciones grandes exitosas, pero descubrimos que era demasiado complejo para las personas que querían algo en seis semanas en lugar de seis meses. Así que me pidieron que mirara qué podíamos hacer con XML, que estaba apareciendo en el horizonte.
 
@@ -793,8 +793,44 @@ En mi experiencia, el argumento más generalizado es el último: es sorprendente
 En XSLT 2.0, la amplitud del lenguaje se ha reducido considerablemente al aumentar la expresividad de la parte no XML de la sintaxis, a saber, las expresiones XPath. Muchos cálculos que requerían cinco líneas de código XSLT en 1.0 ahora se pueden expresar en una sola expresión XPath. Dos construcciones en particular llevaron a esta simplificación: la expresión condicional (`if..then..else`) en XPath 2.0; y la capacidad de definir una función en XSLT (usando `<xsl:function>`) que se puede llamar directamente desde una expresión XPath. Para tomar el ejemplo discutido anteriormente, si reemplaza la plantilla «f» por una función escrita por el usuario «f», puede reemplazar las cinco líneas en el ejemplo con:
 
 
+```xml
+<xsl:variable name="y" select="f($x)"/>
+```
+
+La decisión de basar la sintaxis XSLT en XML ha demostrado su valor de varias formas que no habría predicho de antemano:
+
+* Ha resultado muy fácil ampliar la sintaxis. Agregar nuevos elementos y atributos es trivial; no hay riesgo de introducir dificultades de análisis al hacerlo, y es fácil administrar la compatibilidad con versiones anteriores. (Por el contrario, extender la sintaxis no XML de XQuery sin introducir ambigüedades de análisis es una operación muy delicada).
+
+* La separación del análisis XML del procesamiento XSLT conduce a una buena notificación de errores y recuperación en el compilador. Hace que sea mucho más fácil reportar la ubicación de un error con precisión y reportar muchos errores en una ejecución del compilador. Esto conduce a un ciclo de desarrollo más rápido.
+
+* Facilita el mantenimiento de la coherencia estilística entre los diferentes constructos del lenguaje. La disciplina de definir el lenguaje a través de elementos y atributos crea un vocabulario restringido con el que los diseñadores del lenguaje deben trabajar, y estas restricciones imponen una cierta consistencia de diseño.
+
 ### 1.5.2. Sin efectos secundarios
+
+La idea de que XSL debería ser un lenguaje declarativo libre de efectos secundarios aparece repetidamente en las primeras declaraciones sobre los objetivos y principios de diseño del lenguaje, pero nadie parece explicar por qué: ¿cuál sería el beneficio del usuario?
+
+Se dice que una función o procedimiento en un lenguaje de programación tiene efectos secundarios si realiza cambios en su entorno; por ejemplo, si puede actualizar una variable global que otra función o procedimiento puede leer, o si puede escribir mensajes en un archivo de registro o preguntar al usuario. Si las funciones tienen efectos secundarios, es importante llamarlas el número correcto de veces y en el orden correcto. Las funciones que no tienen efectos secundarios (a veces llamadas funciones puras) se pueden llamar tantas veces como desee y en cualquier orden. No importa cuántas veces evalúe el área de un triángulo, siempre obtendrá la misma respuesta; pero si la función para calcular el área tiene un efecto secundario, como cambiar el tamaño del triángulo, o si no sabe si tiene efectos secundarios o no, entonces es importante llamarlo una sola vez.
+
+Amplío más este concepto en la sección sobre hojas de estilo computacionales en el capítulo 17, página 985.
+
+Es posible encontrar indicios de la razón por la que esto se consideró deseable en las declaraciones de que el lenguaje debería ser igualmente adecuado para uso por lotes o interactivo, y que debería ser capaz de reproducirse progresivamente. Existe la preocupación de que cuando descarga un documento XML grande, no podrá ver nada en la pantalla hasta que se haya recibido el último byte del servidor. Del mismo modo, si se hiciera un pequeño cambio en el documento XML, sería bueno poder determinar el cambio necesario en la visualización de la pantalla, sin volver a calcular todo desde cero. Si un idioma tiene efectos secundarios, entonces se debe definir el orden de ejecución de las declaraciones en el idioma, o el resultado final se vuelve impredecible. Sin efectos secundarios, las declaraciones se pueden ejecutar en cualquier orden, lo que significa que es posible, en principio, procesar las partes de una hoja de estilo de forma selectiva e independiente.
+
+En la práctica, lo que significa estar libre de efectos secundarios es que no se puede actualizar el valor de una variable. Esta restricción es algo que muchos usuarios encuentran muy frustrante al principio, y un alto precio a pagar por estos beneficios bastante remotos. Pero a medida que se familiarice con el lenguaje y aprenda a pensar en usarlo de la forma en que fue diseñado para usarse, en lugar de la forma en que está familiarizado con otros lenguajes, encontrará que deja de pensar en esto como una restricción. De hecho, uno de los beneficios es que elimina toda una clase de errores de su código. Volveré a este tema en el Capítulo 17, donde describo algunos de los patrones de diseño comunes para las hojas de estilo XSLT y, en particular, describo cómo usar código recursivo para manejar situaciones en las que en el pasado probablemente habría usado variables actualizables para mantener seguimiento del estado actual.
+
 ### 1.5.3. Basado en reglas
+
+La característica dominante de una hoja de estilo XSLT típica es que consta de un conjunto de reglas de plantilla, cada una de las cuales describe cómo se debe procesar un tipo de elemento en particular u otra construcción. Las reglas no están dispuestas en ningún orden en particular; no tienen que coincidir con el orden de la entrada o el orden de la salida y, de hecho, hay muy pocas pistas sobre qué orden o anidamiento de elementos espera encontrar el autor de la hoja de estilo en el documento fuente. Esto es lo que hace que XSLT sea un lenguaje declarativo, porque usted especifica qué salida debe producirse cuando se producen patrones particulares en la entrada, a diferencia de un programa de procedimiento en el que tiene que decir qué tareas realizar en qué orden.
+
+Esta estructura basada en reglas es muy parecida a CSS, pero con la principal diferencia de que tanto los patrones (la descripción de los nodos a los que se aplica una regla) como las acciones (la descripción de lo que sucede cuando la regla coincide) son mucho más ricas en funcionalidad.
+
+### 🔴 💻 Ejemplo: Mostrar un Poema
+
+Veamos cómo podemos usar el enfoque basado en reglas para formatear un poema. Una vez más, todavía no hemos introducido todos los conceptos, por lo que no intentaré explicar cada detalle de cómo funciona esto, pero es útil ver cómo se ven realmente las reglas de la plantilla en la práctica.
+
+Aporte
+
+Tomemos este poema como nuestra fuente XML. El archivo fuente se llama poem.xml y la hoja de estilo es poem.xsl.
+
 ### 1.5.4. Tipos basados en esquema XML
 ### 1.5.5. Un sistema de dos idiomas: XSLT y XPath
 ## 1.6. Resumen
